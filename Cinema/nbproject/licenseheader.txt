@@ -1,0 +1,13 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Integrantes del equipo:
+${licensePrefix}- Luis Fallas Carvajal                   Cedula: 305180995
+${licensePrefix}- Diana Fallas Mendez                Cedula: 117770654
+${licensePrefix}- Jean Carlo Jimenez Oviedo     Cedula: 402500956
+${licensePrefix}
+${licensePrefix}Curso: EIF209 ProgramacionIV
+${licensePrefix}I Ciclo 2021
+<#if licenseLast??>
+${licenseLast}
+</#if>
