@@ -9,6 +9,54 @@
  */
 package modelo;
 
+import java.util.List;
+
 public class Sala {
+    private int id_Sala;
+    private int capacidad;
+    private List<Funcion> funciones;
+
+    /**
+     * @return the id_Sala
+     */
+    public int getId_Sala() {
+        return id_Sala;
+    }
+
+    /**
+     * @return the capacidad
+     */
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    /**
+     * @return the funciones
+     */
+    public List<Funcion> getFunciones() {
+        return funciones;
+    }
+
+    /**
+     * @param id_Sala the id_Sala to set
+     */
+    public void setId_Sala(int id_Sala) {
+        this.id_Sala = id_Sala;
+    }
+
+    /**
+     * @param capacidad the capacidad to set
+     */
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    /**
+     * @param funciones the funciones to set
+     */
+    public void setFunciones(List<Funcion> funciones) {
+        this.funciones = funciones;
+    }
+    
     
 }
