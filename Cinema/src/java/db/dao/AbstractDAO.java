@@ -73,7 +73,7 @@ public abstract class AbstractDAO<K, V> implements DAO<K, V> {
     
     @Override
     public List<V> retrieveList(K id) throws SQLException, IOException {
-        List<V> r = null;
+        List<V> r = new ArrayList<>();
         V m = null;
         try (Connection cnx = db.getConnection();
                 PreparedStatement stm = cnx.prepareStatement(getCRUD().getRetrieveCmd())) {
@@ -123,6 +123,10 @@ public abstract class AbstractDAO<K, V> implements DAO<K, V> {
 
     public AbstractCRUD getCRUD() {
         return crud;
+    }
+    
+    public Database getDatabase(){
+        return db;
     }
 
     private final Database db;

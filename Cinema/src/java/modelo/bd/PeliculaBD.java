@@ -7,20 +7,30 @@
  * Curso: EIF209 ProgramacionIV
  * I Ciclo 2021
  */
-package modelo;
+package modelo.bd;
 
 import java.io.Serializable;
+import modelo.Pelicula;
 
-public class Pelicula implements Serializable {
+public class PeliculaBD implements Serializable {
 
-    public Pelicula(String id_pelicula, String titulo, String poster_path, String movie_data) {
+    public PeliculaBD(String id_pelicula, String titulo, String poster_path, String movie_data) {
         this.id_pelicula = id_pelicula;
         this.titulo = titulo;
         this.poster_path = poster_path;
         this.movie_data = movie_data;
     }
 
-    public Pelicula() {
+    public PeliculaBD(Pelicula pelicula) {
+        this(
+                pelicula.getId_pelicula(),
+                pelicula.getTitulo(),
+                pelicula.getPoster_path(),
+                pelicula.getMovie_data()
+        );
+    }
+
+    public PeliculaBD() {
         this(null, null, null, null);
     }
 
@@ -60,5 +70,4 @@ public class Pelicula implements Serializable {
     private String titulo;
     private String poster_path;
     private String movie_data;
-
 }
