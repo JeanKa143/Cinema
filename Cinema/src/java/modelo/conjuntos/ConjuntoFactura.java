@@ -27,40 +27,60 @@ public class ConjuntoFactura {
         }
     }
 
-    public void agragarFactura(Factura factura) throws SQLException, IOException {
-        facturas.add(0, new FacturaBD(factura));
+    public void agragarFactura(Factura factura) {
+        try {
+            facturas.add(0, new FacturaBD(factura));
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
 
     //Falta completar
-    public Factura getFactura(int facturaId) throws SQLException, IOException {
-        FacturaBD facturaBD = facturas.retrieve(facturaId);
+    public Factura getFactura(int facturaId) {
+        Factura factura = null;
 
-        if (facturaBD != null) {
-            return new Factura(facturaBD.getSeq_factura(), facturaBD.getFecha(), /*obtener cliente de ConjuntoCliente*/ null);
+        try {
+            FacturaBD facturaBD = facturas.retrieve(facturaId);
+
+            if (facturaBD != null) {
+                factura = new Factura(facturaBD.getSeq_factura(), facturaBD.getFecha(), /*obtener cliente de ConjuntoCliente*/ null);
+            }
+        } catch (IOException | IllegalArgumentException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        return null;
+        return factura;
     }
 
     //Falta completar
-    public List<Factura> getListaFacturas() throws SQLException, IOException {
-        List<FacturaBD> facturasBD = facturas.listAll();
+    public List<Factura> getListaFacturas() {
         List<Factura> listaFacturas = new ArrayList<>();
 
-        for (FacturaBD f : facturasBD) {
-            listaFacturas.add(new Factura(f.getSeq_factura(), f.getFecha(), /*obtener cliente de ConjuntoCliente*/ null));
+        try {
+            List<FacturaBD> facturasBD = facturas.listAll();
+
+            for (FacturaBD f : facturasBD) {
+                listaFacturas.add(new Factura(f.getSeq_factura(), f.getFecha(), /*obtener cliente de ConjuntoCliente*/ null));
+            }
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
         return listaFacturas;
     }
 
     //Falta completar
-    public List<Factura> getListaFacturasCliente(String clienteId) throws SQLException, IOException {
-        List<FacturaBD> facturasBD = facturas.listAllByCliente(clienteId);
+    public List<Factura> getListaFacturasCliente(String clienteId) {
         List<Factura> listaFacturas = new ArrayList<>();
 
-        for (FacturaBD f : facturasBD) {
-            listaFacturas.add(new Factura(f.getSeq_factura(), f.getFecha(), /*obtener cliente de ConjuntoCliente*/ null));
+        try {
+            List<FacturaBD> facturasBD = facturas.listAllByCliente(clienteId);
+
+            for (FacturaBD f : facturasBD) {
+                listaFacturas.add(new Factura(f.getSeq_factura(), f.getFecha(), /*obtener cliente de ConjuntoCliente*/ null));
+            }
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
         return listaFacturas;

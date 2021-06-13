@@ -27,27 +27,42 @@ public class ConjuntoPelicula {
         }
     }
 
-    public void agregarPelicula(Pelicula pelicula) throws SQLException, IOException {
-        peliculas.add(pelicula.getId_pelicula(), new PeliculaBD(pelicula));
+    public void agregarPelicula(Pelicula pelicula) {
+        try {
+            peliculas.add(pelicula.getId_pelicula(), new PeliculaBD(pelicula));
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
 
-    public Pelicula getPelicula(String peliculaId) throws SQLException, IOException {
-        PeliculaBD peliculaBD = peliculas.retrieve(peliculaId);
+    public Pelicula getPelicula(String peliculaId) {
+        Pelicula pelicula = null;
 
-        if (peliculaBD != null) {
-            return new Pelicula(peliculaBD.getId_pelicula(), peliculaBD.getTitulo(), peliculaBD.getPoster_path(),
-                    peliculaBD.getMovie_data());
+        try {
+            PeliculaBD peliculaBD = peliculas.retrieve(peliculaId);
+
+            if (peliculaBD != null) {
+                pelicula = new Pelicula(peliculaBD.getId_pelicula(), peliculaBD.getTitulo(), peliculaBD.getPoster_path(),
+                        peliculaBD.getMovie_data());
+            }
+        } catch (IOException | IllegalArgumentException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        return null;
+        return pelicula;
     }
 
-    public List<Pelicula> getListaPeliculas() throws SQLException, IOException {
-        List<PeliculaBD> pelicualasBD = peliculas.listAll();
+    public List<Pelicula> getListaPeliculas() {
         List<Pelicula> listaPeliculas = new ArrayList<>();
 
-        for (PeliculaBD p : pelicualasBD) {
-            listaPeliculas.add(new Pelicula(p.getId_pelicula(), p.getTitulo(), p.getPoster_path(), p.getMovie_data()));
+        try {
+            List<PeliculaBD> pelicualasBD = peliculas.listAll();
+
+            for (PeliculaBD p : pelicualasBD) {
+                listaPeliculas.add(new Pelicula(p.getId_pelicula(), p.getTitulo(), p.getPoster_path(), p.getMovie_data()));
+            }
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
         return listaPeliculas;

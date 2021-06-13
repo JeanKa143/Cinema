@@ -29,38 +29,58 @@ public class ConjuntoAsientoSalaFuncion {
     }
 
     public void agregarAsiento(AsientoSalaFuncion asiento, int funcionId, Date funcionFecha, int funcionSalaCine,
-            int funcionSalaNumero) throws SQLException, IOException {
+            int funcionSalaNumero) {
 
-        asientos.add(0, new AsientoSalaFuncionBD(asiento, funcionId, funcionFecha, funcionSalaCine, funcionSalaNumero));
+        try {
+            asientos.add(0, new AsientoSalaFuncionBD(asiento, funcionId, funcionFecha, funcionSalaCine, funcionSalaNumero));
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
 
-    public AsientoSalaFuncion getAsiento(char fila, int posicion, int funcionId) throws SQLException, IOException {
-        AsientoSalaFuncionBD asientoBD = asientos.retrieve(fila, posicion, funcionId);
+    public AsientoSalaFuncion getAsiento(char fila, int posicion, int funcionId) {
+        AsientoSalaFuncion asiento = null;
 
-        if (asientoBD != null) {
-            return new AsientoSalaFuncion(asientoBD.getFila(), asientoBD.getPosicion(), !asientoBD.isOcupado());
+        try {
+            AsientoSalaFuncionBD asientoBD = asientos.retrieve(fila, posicion, funcionId);
+
+            if (asientoBD != null) {
+                asiento = new AsientoSalaFuncion(asientoBD.getFila(), asientoBD.getPosicion(), !asientoBD.isOcupado());
+            }
+        } catch (IOException | IllegalArgumentException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        return null;
+        return asiento;
     }
 
-    public List<AsientoSalaFuncion> getListaAsientos() throws SQLException, IOException {
-        List<AsientoSalaFuncionBD> asientosBD = asientos.listAll();
+    public List<AsientoSalaFuncion> getListaAsientos() {
         List<AsientoSalaFuncion> listasAsientos = new ArrayList<>();
 
-        for (AsientoSalaFuncionBD a : asientosBD) {
-            listasAsientos.add(new AsientoSalaFuncion(a.getFila(), a.getPosicion(), !a.isOcupado()));
+        try {
+            List<AsientoSalaFuncionBD> asientosBD = asientos.listAll();
+
+            for (AsientoSalaFuncionBD a : asientosBD) {
+                listasAsientos.add(new AsientoSalaFuncion(a.getFila(), a.getPosicion(), !a.isOcupado()));
+            }
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
         return listasAsientos;
     }
 
-    public List<AsientoSalaFuncion> getListaAsientosFuncion(int funcionId) throws SQLException, IOException {
-        List<AsientoSalaFuncionBD> asientosBD = asientos.listAllByFuncion(funcionId);
+    public List<AsientoSalaFuncion> getListaAsientosFuncion(int funcionId) {
         List<AsientoSalaFuncion> listasAsientos = new ArrayList<>();
+        
+        try {
+            List<AsientoSalaFuncionBD> asientosBD = asientos.listAllByFuncion(funcionId);
 
-        for (AsientoSalaFuncionBD a : asientosBD) {
-            listasAsientos.add(new AsientoSalaFuncion(a.getFila(), a.getPosicion(), !a.isOcupado()));
+            for (AsientoSalaFuncionBD a : asientosBD) {
+                listasAsientos.add(new AsientoSalaFuncion(a.getFila(), a.getPosicion(), !a.isOcupado()));
+            }
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
         return listasAsientos;
