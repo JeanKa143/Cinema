@@ -8,11 +8,19 @@
  * I Ciclo 2021
  */
 package modelo;
+import modelo.bd.AsientoSalaFuncionBD;
 
 public class Tiquete {
     private int id_tiquete;
-    private AsientoSalaFuncion asiento;
+    private AsientoSalaFuncionBD asiento;
     private double monto;
+
+    public Tiquete(int id_tiquete, AsientoSalaFuncionBD asiento, double monto) {
+        this.id_tiquete = id_tiquete;
+        this.asiento = asiento;
+        this.monto = monto;
+    }
+    
 
     /**
      * @return the id_tiquete
@@ -24,7 +32,7 @@ public class Tiquete {
     /**
      * @return the asiento
      */
-    public AsientoSalaFuncion getAsiento() {
+    public AsientoSalaFuncionBD getAsiento() {
         return asiento;
     }
 
@@ -45,7 +53,7 @@ public class Tiquete {
     /**
      * @param asiento the asiento to set
      */
-    public void setAsiento(AsientoSalaFuncion asiento) {
+    public void setAsiento(AsientoSalaFuncionBD asiento) {
         this.asiento = asiento;
     }
 

@@ -15,6 +15,13 @@ public class Sala {
     private int id_Sala;
     private int capacidad;
     private List<Funcion> funciones;
+    
+     public Sala(int id_Sala, int capacidad) {
+        this.id_Sala = id_Sala;
+        this.capacidad = capacidad;
+        funciones=null;
+
+    }
 
     /**
      * @return the id_Sala
@@ -56,6 +63,12 @@ public class Sala {
      */
     public void setFunciones(List<Funcion> funciones) {
         this.funciones = funciones;
+    }
+
+    @Override
+    public String toString() {
+        
+        return String.format("id_Sala: %d, capacidad: %s",getId_Sala(),getCapacidad());
     }
     
     

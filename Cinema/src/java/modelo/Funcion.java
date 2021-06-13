@@ -14,9 +14,29 @@ import java.util.List;
 
 public class Funcion {
     private Date fecha;
-    private Pelicula pelicula;
+  //  private Pelicula pelicula;
+    private String nombrePelicula; // cambiar por el objeto pelicula
     private List<AsientoSalaFuncion> asientoSalaFuncion;
 
+//    public Funcion(Date fecha, Pelicula pelicula, List<AsientoSalaFuncion> asientoSalaFuncion) {
+//        this.fecha = fecha;
+//        this.pelicula = pelicula;
+//        this.asientoSalaFuncion = asientoSalaFuncion;
+//    }
+// public Funcion(Date fecha, Pelicula pelicula) {
+//        this.fecha = fecha;
+//        this.pelicula = pelicula;
+//    
+//    }
+
+    public Funcion(Date fecha, String nombrePelicula) {
+        this.fecha = fecha;
+        this.nombrePelicula = nombrePelicula;
+    }
+    
+    
+    
+    
     /**
      * @return the fecha
      */
@@ -27,9 +47,9 @@ public class Funcion {
     /**
      * @return the pelicula
      */
-    public Pelicula getPelicula() {
-        return pelicula;
-    }
+//    public Pelicula getPelicula() {
+//        return pelicula;
+//    }
 
     /**
      * @return the asientoSalaFuncion
@@ -48,14 +68,28 @@ public class Funcion {
     /**
      * @param pelicula the pelicula to set
      */
-    public void setPelicula(Pelicula pelicula) {
-        this.pelicula = pelicula;
-    }
+//    public void setPelicula(Pelicula pelicula) {
+//        this.pelicula = pelicula;
+//    }
 
     /**
      * @param asientoSalaFuncion the asientoSalaFuncion to set
      */
     public void setAsientoSalaFuncion(List<AsientoSalaFuncion> asientoSalaFuncion) {
         this.asientoSalaFuncion = asientoSalaFuncion;
+    }
+
+    /**
+     * @return the nombrePelicula
+     */
+    public String getNombrePelicula() {
+        return nombrePelicula;
+    }
+
+    /**
+     * @param nombrePelicula the nombrePelicula to set
+     */
+    public void setNombrePelicula(String nombrePelicula) {
+        this.nombrePelicula = nombrePelicula;
     }
 }
