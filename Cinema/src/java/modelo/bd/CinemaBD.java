@@ -9,6 +9,8 @@
  */
 package modelo.bd;
 
+import modelo.Cinema;
+
 public class CinemaBD {
     private int id_cinema;
     private String nombre;
@@ -19,6 +21,15 @@ public class CinemaBD {
         this.nombre = nombre;
         this.direccion = direccion;
     }
+    
+     public CinemaBD(Cinema cinema) {
+        this(
+                cinema.getIdCinema(),
+                cinema.getNombre(),
+                cinema.getDireccion()
+        );
+    }
+      
     
     /**
      * @param id_cinema the id_cinema to set

@@ -9,6 +9,8 @@
  */
 package modelo.bd;
 
+import modelo.Cliente;
+
 public class ClienteBD {
     private String usuario_id_usuario;
     private String id_cliente;
@@ -27,6 +29,16 @@ public class ClienteBD {
         this.tarjeta_pago = tarjeta_pago;
     }
 
+     public ClienteBD(Cliente cliente) {
+        this(
+              cliente.getId(),
+              cliente.getId(),
+              cliente.getApellidos(),
+              cliente.getNombre(),
+              cliente.getTelefono(),
+              cliente.getTarjetaPago()
+              );
+    }
     /**
      * @param usuario_id_usuario the usuario_id_usuario to set
      */

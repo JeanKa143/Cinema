@@ -26,7 +26,6 @@ public class UsuarioBD {
     
       public UsuarioBD(Usuario usuario) {
         this(
-                
                 usuario.getId(),
                 usuario.getClave(),
                 updateRol(usuario)
