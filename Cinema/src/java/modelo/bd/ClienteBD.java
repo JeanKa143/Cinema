@@ -17,7 +17,7 @@ public class ClienteBD {
     private String telefono;
     private String tarjeta_pago;
     
-    ClienteBD(String usuario_id_usuario, String id_cliente, String apellidos, String nombre, String telefono,
+    public ClienteBD(String usuario_id_usuario, String id_cliente, String apellidos, String nombre, String telefono,
             String tarjeta_pago){
         this.usuario_id_usuario = usuario_id_usuario;
         this.id_cliente = id_cliente;
@@ -75,6 +75,13 @@ public class ClienteBD {
      */
     public String getId_cliente() {
         return id_cliente;
+    }
+    
+     /**
+     * @return the usuario_id_usuario
+     */
+    public String getUsuarioIdUsuario() {
+        return usuario_id_usuario;
     }
 
      /**

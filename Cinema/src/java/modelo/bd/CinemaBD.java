@@ -14,7 +14,7 @@ public class CinemaBD {
     private String nombre;
     private String direccion;
     
-    CinemaBD(int id_cinema, String nombre, String direccion){
+    public CinemaBD(int id_cinema, String nombre, String direccion){
         this.id_cinema = id_cinema;
         this.nombre = nombre;
         this.direccion = direccion;
