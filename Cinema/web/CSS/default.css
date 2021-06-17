@@ -1,0 +1,83 @@
+/*
+Integrantes del equipo:
+- Luis Fallas Carvajal                   Cedula: 305180995
+- Diana Fallas Mendez                Cedula: 117770654
+- Jean Carlo Jimenez Oviedo     Cedula: 402500956
+
+Curso: EIF209 ProgramacionIV
+I Ciclo 2021
+*/
+/* 
+    Created on : 17/06/2021, 03:26:08 PM
+    Author     : Luis Fallas
+*/
+
+
+
+body {
+    background-color: #333333;
+    color: white;
+}
+
+#wrapper {
+    font-family: specialFont;
+    font-size: 24pt;
+}
+
+header {
+    border-bottom: 1px solid gray;
+    height: 96px;
+    position: relative;
+}
+
+header h1 {
+    font-family: specialFontBold;
+    font-size: 72px;
+    margin-left: 50px;
+}
+
+ul{
+    display:  flex;
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+}
+ li:hover{
+     background: #66ccff;
+}
+
+ li{
+    display: block;
+    padding:  15px 20px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.galeria {
+    border: none;
+    margin: 16px auto;
+}
+
+.galeria td {
+    border: none;
+  
+    font-family: OpenSans;
+    font-size: 12pt;
+    padding: 16px;
+    vertical-align: top;
+}
+
+.galeria td p {
+    margin: 4px;
+    text-align: center;
+    padding: 8px;
+}
+
+.galeria img {
+    margin: 30px;
+    background-color: #444444;
+    border: none;
+    height: 240px;
+    width: 160px;
+}

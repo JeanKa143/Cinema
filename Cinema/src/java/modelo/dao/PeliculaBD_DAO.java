@@ -28,7 +28,8 @@ public class PeliculaBD_DAO extends AbstractDAO<String, PeliculaBD> {
                 rs.getString("id_pelicula"),
                 rs.getString("titulo"),
                 rs.getString("poster_path"),
-                rs.getObject("movie_data", String.class)
+                rs.getObject("movie_data", String.class),
+                rs.getInt("cartelera")
         );
     }
 
@@ -38,6 +39,7 @@ public class PeliculaBD_DAO extends AbstractDAO<String, PeliculaBD> {
         stm.setString(2, value.getTitulo());
         stm.setString(3, value.getPoster_path());
         stm.setObject(4, value.getMovie_data());
+        stm.setObject(5, value.getCartelera());
     }
 
     @Override
@@ -45,6 +47,7 @@ public class PeliculaBD_DAO extends AbstractDAO<String, PeliculaBD> {
         stm.setString(1, value.getTitulo());
         stm.setString(2, value.getPoster_path());
         stm.setObject(3, value.getMovie_data());
-        stm.setString(4, id);
+        stm.setObject(4, value.getCartelera());
+        stm.setString(5, id);
     }
 }

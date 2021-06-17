@@ -14,11 +14,12 @@ import modelo.Pelicula;
 
 public class PeliculaBD implements Serializable {
 
-    public PeliculaBD(String id_pelicula, String titulo, String poster_path, String movie_data) {
+    public PeliculaBD(String id_pelicula, String titulo, String poster_path, String movie_data, int cartelera) {
         this.id_pelicula = id_pelicula;
         this.titulo = titulo;
         this.poster_path = poster_path;
         this.movie_data = movie_data;
+        this.cartelera=cartelera;
     }
 
     public PeliculaBD(Pelicula pelicula) {
@@ -26,12 +27,15 @@ public class PeliculaBD implements Serializable {
                 pelicula.getId_pelicula(),
                 pelicula.getTitulo(),
                 pelicula.getPoster_path(),
-                pelicula.getMovie_data()
+                pelicula.getMovie_data(),0
         );
+        if(pelicula.getCartelera().equals(true)){
+            setCartelera(1);
+        }
     }
 
     public PeliculaBD() {
-        this(null, null, null, null);
+        this(null, null, null, null,0);
     }
 
     public String getId_pelicula() {
@@ -66,8 +70,20 @@ public class PeliculaBD implements Serializable {
         this.movie_data = movie_data;
     }
 
+     public int getCartelera() {
+        return cartelera;
+    }
+
+    public void setCartelera(int cartelera) {
+        this.cartelera = cartelera;
+    }
+    
     private String id_pelicula;
     private String titulo;
     private String poster_path;
     private String movie_data;
+    private int cartelera;
+
+    
+   
 }

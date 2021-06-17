@@ -40,22 +40,22 @@ public class PeliculaBD_CRUD extends AbstractCRUD {
 
     protected static final String LIST_CMD
             = "SELECT "
-            + "id_pelicula, titulo, poster_path, movie_data "
+            + "id_pelicula, titulo, poster_path, movie_data, cartelera "
             + "FROM bd_cinema.pelicula ORDER BY titulo; ";
 
     protected static final String ADD_CMD
             = "INSERT INTO bd_cinema.pelicula "
-            + "(id_pelicula, titulo, poster_path, movie_data) "
-            + "VALUES (?, ?, ?, ?); ";
+            + "(id_pelicula, titulo, poster_path, movie_data, cartelera)"
+            + "VALUES (?, ?, ?, ?, ?); ";
 
     protected static final String RETRIEVE_CMD
             = "SELECT "
-            + "id_pelicula, titulo, poster_path, movie_data "
+            + "id_pelicula, titulo, poster_path, movie_data, cartelera "
             + "FROM bd_cinema.pelicula WHERE id_pelicula = ?; ";
 
     protected static final String UPDATE_CMD
             = "UPDATE bd_cinema.pelicula "
-            + "SET titulo = ?, poster_path = ?, movie_data = ? "
+            + "SET titulo = ?, poster_path = ?, movie_data = ?, cartelera = ? "
             + "WHERE id_pelicula = ?; ";
 
     protected static final String DELETE_CMD

@@ -10,7 +10,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>Login</title>
-        <link href="CSS/login.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <jsp:useBean id="elUsuario" class="modelo.Usuario" scope="session">

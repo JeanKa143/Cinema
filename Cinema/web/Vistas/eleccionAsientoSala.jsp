@@ -10,7 +10,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Elección de asientos</title>
-    <link rel="stylesheet" href="CSS/sala.css" />
+    <link rel="stylesheet" href="../CSS/sala.css" />
   </head>
   <body>
     <!--<form id="form">
@@ -29,6 +29,6 @@
       <div class="gallery__item">7</div>
       <div class="gallery__item">8</div>
     </div>
-    <script src="js/scriptSalas.js"></script>
+    <script src="../js/scriptSalas.js"></script>
   </body>
 </html>
