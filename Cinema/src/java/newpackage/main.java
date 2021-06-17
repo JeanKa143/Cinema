@@ -8,10 +8,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Funcion;
 import modelo.Tiquete;
+import modelo.Usuario;
 import modelo.bd.AsientoSalaFuncionBD;
 import modelo.bd.FuncionBD;
 import modelo.conjuntos.ConjuntoFuncion;
 import modelo.conjuntos.ConjuntoTiquetes;
+import modelo.conjuntos.ConjuntoUsuarios;
 
 
 
@@ -34,11 +36,11 @@ public class main {
 
     public static void main(String args[]) {
                  
-       ConjuntoTiquetes conjunto = new ConjuntoTiquetes();
-      List<Tiquete> list = conjunto.getListaTiquetes();
+      ConjuntoUsuarios conjunto = new ConjuntoUsuarios();
+      List<Usuario> list = conjunto.getListaUsuarios();
       
-      for(Tiquete t : list){
-          System.out.println(t.getMonto());
+      for(Usuario t : list){
+          System.out.println(t.getRol());
       }
      
      

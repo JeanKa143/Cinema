@@ -39,6 +39,23 @@ public class ConjuntoUsuarios {
         }
     }
 
+    public boolean validaUsuario(String usuario_id, String clave) {
+        try {
+            UsuarioBD usuarioBD = usuarios.retrieve(Integer.parseInt(usuario_id)); //aqui ya valida el id
+
+            if (usuarioBD != null) {
+                if(usuarioBD.getClave().equals(clave)){ //aqui valida la clave
+                    System.out.println(usuarioBD.getClave());
+                     System.out.println(clave);
+                    return true;
+                }
+            }
+        } catch (IOException | IllegalArgumentException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+        return false;
+    }
+    
     public Usuario getUsuario(String usuario_id) {
         Usuario usuario = null;
 
@@ -58,7 +75,7 @@ public class ConjuntoUsuarios {
         return usuario;
     }
 
-    public List<Usuario> getListaPeliculas() {
+    public List<Usuario> getListaUsuarios() {
         List<Usuario> listaUsuarios = new ArrayList<>();
 
         try {
