@@ -59,20 +59,7 @@ ul{
     margin: 16px auto;
 }
 
-.galeria td {
-    border: none;
-  
-    font-family: OpenSans;
-    font-size: 12pt;
-    padding: 16px;
-    vertical-align: top;
-}
 
-.galeria td p {
-    margin: 4px;
-    text-align: center;
-    padding: 8px;
-}
 
 .galeria img {
     margin: 30px;
