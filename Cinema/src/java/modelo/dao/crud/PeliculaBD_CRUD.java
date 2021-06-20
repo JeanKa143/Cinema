@@ -51,7 +51,7 @@ public class PeliculaBD_CRUD extends AbstractCRUD {
     protected static final String RETRIEVE_CMD
             = "SELECT "
             + "id_pelicula, titulo, poster_path, movie_data, cartelera "
-            + "FROM bd_cinema.pelicula WHERE id_pelicula = ?; ";
+            + "FROM bd_cinema.pelicula WHERE titulo = ?; ";
 
     protected static final String UPDATE_CMD
             = "UPDATE bd_cinema.pelicula "

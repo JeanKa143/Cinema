@@ -41,10 +41,10 @@ public class Cartelera {
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Pelicula buscarPeliculaID(@PathParam("id") String id) {
+    public Pelicula buscarPeliculaID(@PathParam("id") String nombre) {
         try {
             ConjuntoPelicula conjunto = new ConjuntoPelicula();
-            return conjunto.getPelicula(id);
+            return conjunto.getPelicula(nombre);
         } catch (Exception ex) {
             throw new NotFoundException();
         }

@@ -35,11 +35,10 @@ public class ConjuntoPelicula {
         }
     }
 
-    public Pelicula getPelicula(String peliculaId) {
+    public Pelicula getPelicula(String nombrePelicula) {
         Pelicula pelicula = null;
-
         try {
-            PeliculaBD peliculaBD = peliculas.retrieve(peliculaId);
+            PeliculaBD peliculaBD = peliculas.retrieve(nombrePelicula.toLowerCase());
 
             if (peliculaBD != null) {
                 pelicula = new Pelicula(peliculaBD.getId_pelicula(), peliculaBD.getTitulo(), peliculaBD.getPoster_path(),
