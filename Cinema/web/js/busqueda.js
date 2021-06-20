@@ -32,35 +32,67 @@ function cargarPelicula(nombre) {
 }
 
 function mostrar(idx) {
-    console.log(idx);
-    var ref = document.getElementById("search");
-
+    var ref = document.getElementById("mod");
+    var titulo = document.getElementById("titulo");
+    var id = document.getElementById("id");
+    var sinopsis = document.getElementById("sinopsis");
+    var img = document.getElementById("pop-up-img");
+    var model_contanedor = document.getElementById("modal_contenedor");
     if (ref) {
-        var newDiv = document.createElement("div");
-        newDiv.setAttribute('id','pop-up');
-        var img = document.createElement('IMG');
-        img.setAttribute('id','pop-up-img');
+        titulo = document.createTextNode('');
+        id = document.createTextNode('');
+        sinopsis = document.createTextNode('');
+
+
+
+
+        titulo = document.createTextNode('Nombre de la pelicula: \n' + idx.titulo);
+        id = document.createTextNode('El ID de la pelicula es: ' + idx.id_pelicula);
+        sinopsis = document.createTextNode('Sinopsis: ' + idx.movie_data);
         img.setAttribute('src', `${posterUrl}${idx.poster_path}`);
-        newDiv.appendChild(img);
-        var title = document.createTextNode('Nombre de la pelicula: \n'+ idx.titulo);
-        var id = document.createTextNode('El ID de la pelicula es: '+ idx.id_pelicula);
-        var sinopsis = document.createTextNode('Sinopsis: '+ idx.movie_data);
-        var enter = document.createElement('br');
-        newDiv.appendChild(title);
-        newDiv.appendChild(enter);
-        newDiv.appendChild(id);
-        newDiv.appendChild(enter);
-        newDiv.appendChild(sinopsis);
-        
-        ref.appendChild(newDiv);
+        ref.appendChild(titulo);
+        ref.appendChild(document.createElement("br"));
+        ref.appendChild(document.createElement("br"));
 
+        ref.appendChild(id);
+        ref.appendChild(document.createElement("br"));
+        ref.appendChild(document.createElement("br"));
+
+        ref.appendChild(sinopsis);
+        ref.appendChild(document.createElement("br"));
+        ref.appendChild(document.createElement("br"));
+
+        ref.appendChild(img);
+        model_contanedor.classList.add('show');
+//        var cerrar = document.createElement('button');
+//        cerrar.setAttribute('id', 'cerrar-btn');
+//        cerrar.appendChild(document.createTextNode("Cerrar"));
+//
+//        divModal.appendChild(title);
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(id);
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(sinopsis);
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(img);
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(document.createElement("br"));
+//        divModal.appendChild(cerrar);
+//        
+//        divContenedor.appendChild(divModal);
+//        ref.appendChild(divContenedor);
     }
-
-
-    alternar();
-
 }
-
+var btnCerrar = document.getElementById('cerrar-btn');
+var modal_contenedor = document.getElementById('modal_contenedor');
+if (btnCerrar) {
+    btnCerrar.addEventListener('click', () => {
+        modal_contenedor.classList.remove('show');
+    });
+}
 function alternar() {
     var refA = document.getElementById("page-mask");
     if (refA) {

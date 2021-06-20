@@ -79,22 +79,47 @@ li{
     width: 160px;
 }
 
-#pop-up {
-    background-color: rgba(255,240,196,0.8);
-    border: 3px solid darkred;
-    display: block;
-    height: 400px;
-    width: 440px;
-    position: fixed;
-    top: 32px;
-    left: 50%;
-    transform: translate(-50%, 0%);
+button{
+    background-color : #47a386;
+    border:0;
+    border-radius: 5px;
+    color:#fff;
+    font-size: 14px;
+    padding: 10px 25px;
 }
 
 #pop-up-img {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 160px;
+}
+
+.modal-contenedor{
+    display:flex;
+    background: rgba(255,240,196,0.8);
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    pointer-events: none;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+}
+.show{
+    pointer-events: auto;
+    opacity:1;
+}
+.moda{
+    background-color: #fff;
+    width: 600px;
+    height: 500px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba (0,0,0,0.2);
+    text-align: center;
 }

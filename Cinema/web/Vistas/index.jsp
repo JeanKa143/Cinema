@@ -12,8 +12,8 @@
         <meta charset="UTF-8" />
         <link href="../CSS/default.css" rel="stylesheet" type="text/css"/>
         <script src="../js/cartelera.js" type="text/javascript"></script>
-        
     </head>
+
     <body>   
         <header>
             <div class="buscar">
@@ -21,28 +21,47 @@
                 <button id="btn-buscar" type="button" class="btn-busca">Buscar</button>
             </div>
         </header>
-
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</li>
-                <li><a href="#">Contactenos</li>
-                <li><a href="#">Registro</li>
-                <li><a href="#">Iniciar sesion</li>
-                <li><a href="eleccionAsientoSala.jsp">Asientos</li>
-            </ul>
-        </nav>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</li>
+                    <li><a href="#">Contactenos</li>
+                    <li><a href="#">Registro</li>
+                    <li><a href="#">Iniciar sesion</li>
+                    <li><a href="#">Asientos</li>
+                </ul>
+            </nav>
+        </div>
         <div id="contents">
+
             <section>
                 <table id="galeria" class="galeria">
             </section>
-            <div id="search">
-                
+            <div id="modal_contenedor" class="modal-contenedor">
+                <div id="mod" class="moda">
+                    <h3 id="titulo">
+                        
+                    </h3>
+                    <h3 id="id">
+                        
+                    </h3>
+                    <h3 id="sinopsis">
+                        
+                    </h3>
+                    <button id="cerrar-btn">
+                        Cerrar
+                    </button>
+                    
+                    <img id="pop-up-img">
+                    
+                </div>
+
             </div>
         </div>
-      
-        <footer></footer>
-    </div>
 
-</body>
-<script src="../js/busqueda.js" type="text/javascript"></script>
+        <footer>
+
+        </footer>
+    </body>
+    <script src="../js/busqueda.js" type="text/javascript"></script>
 </html>
