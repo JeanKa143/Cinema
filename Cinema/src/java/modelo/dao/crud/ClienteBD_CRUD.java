@@ -49,8 +49,8 @@ public class ClienteBD_CRUD  extends AbstractCRUD {
 
     protected static final String ADD_CMD
             = "INSERT INTO bd_cinema.cliente "
-            + "(id_cinema, nombre, direccion) "
-            + "VALUES (?, ?, ?); ";
+            + "(usuario_id_usuario, id_cliente, apellidos, nombre, telefono, tarjeta_pago) "
+            + "VALUES (?, ?, ?, ?, ?, ?); ";
 
     protected static final String RETRIEVE_CMD
             = "SELECT "

@@ -8,97 +8,101 @@
  * I Ciclo 2021
  */
 package modelo;
-import java.util.List;
 
-public class Cliente extends Usuario {
-    
-    private String id;
-    private String clave;
+import java.io.Serializable;
+import java.util.List;
+import modelo.Usuario.Rol;
+import org.json.JSONObject;
+
+public class Cliente extends Usuario implements Serializable {
+
+    private String idCliente;
     private String nombre;
     private String apellidos;
     private String telefono;
     private String tarjeta_pago;
     private List<Factura> facturas;
- 
-    public Cliente(){
-       super();
-    }
-   
-    public Cliente(String id, String clave, Rol rol, String nombre, String apellidos, String telefono, String tarjeta_pago,
-            List<Factura> facturas){
-        
+
+    public Cliente(String idCliente, String nombre, String apellidos, String telefono, String tarjeta_pago,
+            List<Factura> facturas, String id, String clave, Rol rol) {
+
         super(id, clave, rol);
-        this.id = super.getId();
-        this.clave = super.getClave();
+        this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.tarjeta_pago = tarjeta_pago;
         this.facturas = facturas;
     }
- 
-    public void setNombre(String nombre){
+
+    public Cliente(JSONObject j) {
+        this(j.getString("idCliente"), j.getString("nombre"), j.getString("apellidos"), j.getString("telefono"),
+                j.getString("tarjeta_pago"), null, j.getString("id"), j.getString("clave"), Rol.cliente);
+    }
+
+    public Cliente() {
+        this(null, null, null, null, null, null, null, null, null);
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+
+        r.put("idCliente", idCliente);
+        r.put("nombre", nombre);
+        r.put("apellidos", apellidos);
+        r.put("telefono", telefono);
+        r.put("tarjeta_pago", tarjeta_pago);
+        r.put("id", this.getId());
+        r.put("rol", this.getRol());
+
+        return r;
+    }
+
+    public String getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public void setApellidos(String apellidos){
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-    
-    public void setTelefono(String telefono){
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public void setTarjetaPago(String tarjeta_pago){
-        this.tarjeta_pago = tarjeta_pago;
-    }
-    
-    public void setFacturas(List<Factura> facturas){
-        this.facturas = facturas;
-    }
-    
-    public void setRol(Rol rol){
-        super.setRol(rol);
-    }
-    
-    public void setClave(String clave){
-        super.setClave(clave);
-    }
-    
-    public void setId(String id){
-        super.setId(id);
-    }
-    
-    public Rol getRol(){
-        return super.getRol();   
-    }
-    
-    public String getId(){
-        return super.getId();
-    }
-    
-    public String getClave(){
-        return super.getClave();
-    }
-    
-    public String getNombre(){
-        return this.nombre;
-    }
-    
-    public String getApellidos(){
-        return this.apellidos;
-    }
-    
-    public String getTelefono(){
-        return this.telefono;
-    }
-    
-    public String getTarjetaPago(){
-        return this.tarjeta_pago;
-    }
-    
-    public List<Factura> getListaFacturas(){
-        return this.facturas;
+    public String getTarjeta_pago() {
+        return tarjeta_pago;
     }
 
+    public void setTarjeta_pago(String tarjeta_pago) {
+        this.tarjeta_pago = tarjeta_pago;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
 }

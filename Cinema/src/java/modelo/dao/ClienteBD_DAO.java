@@ -20,8 +20,9 @@ import modelo.dao.crud.ClienteBD_CRUD;
  *
  * @author diana
  */
-public class ClienteBD_DAO extends AbstractDAO<Integer, ClienteBD>{
-      public ClienteBD_DAO() throws Exception {
+public class ClienteBD_DAO extends AbstractDAO<String, ClienteBD> {
+
+    public ClienteBD_DAO() throws Exception {
         super(new ModeloBD(), new ClienteBD_CRUD());
 
     }
@@ -34,13 +35,12 @@ public class ClienteBD_DAO extends AbstractDAO<Integer, ClienteBD>{
                 rs.getString("nombre"),
                 rs.getString("telefono"),
                 rs.getString("tarjeta_pago"));
-
     }
 
     @Override
-    public void setAddParameters(PreparedStatement stm, Integer id, ClienteBD value) throws SQLException {
-        stm.setString(1, value.getUsuarioIdUsuario());
-        stm.setString(2, String.valueOf(id));
+    public void setAddParameters(PreparedStatement stm, String id, ClienteBD value) throws SQLException {
+        stm.setString(1, id);
+        stm.setString(2, value.getId_cliente());
         stm.setString(3, value.getApellidos());
         stm.setString(4, value.getNombre());
         stm.setString(5, value.getTelefono());
@@ -48,12 +48,12 @@ public class ClienteBD_DAO extends AbstractDAO<Integer, ClienteBD>{
     }
 
     @Override
-    public void setUpdateParameters(PreparedStatement stm, Integer id, ClienteBD value) throws SQLException {
+    public void setUpdateParameters(PreparedStatement stm, String id, ClienteBD value) throws SQLException {
         stm.setString(1, value.getUsuarioIdUsuario());
         stm.setString(2, value.getApellidos());
         stm.setString(3, value.getNombre());
         stm.setString(4, value.getTelefono());
         stm.setString(5, value.getTarjeta_pago());
-        stm.setInt(6, id);
+        stm.setString(6, id);
     }
 }

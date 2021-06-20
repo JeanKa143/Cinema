@@ -9,12 +9,14 @@
  */
 package modelo;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable{
     
     private String id;
     private String clave;
     
-    public enum Rol {
+    public enum Rol implements Serializable {
         administrador,
         cliente
     }

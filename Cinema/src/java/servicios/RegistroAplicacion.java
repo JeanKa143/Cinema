@@ -16,15 +16,18 @@ import javax.ws.rs.core.Application;
 
 /**
  *
-* @author Luis Fallas
+ * @author Luis Fallas
  */
 @ApplicationPath("api")
-public class RegistroAplicacion extends Application{
+public class RegistroAplicacion extends Application {
+
+    @Override
     public Set<Class<?>> getClasses() {
 
         HashSet<Class<?>> classes = new HashSet<>();
         classes.add(Cartelera.class);
-        
+        classes.add(ServicioCliente.class);
+
         return classes;
-    }  
+    }
 }

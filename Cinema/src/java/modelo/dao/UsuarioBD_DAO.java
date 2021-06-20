@@ -20,7 +20,7 @@ import modelo.dao.crud.UsuarioBD_CRUD;
  *
  * @author diana
  */
-public class UsuarioBD_DAO extends AbstractDAO<Integer, UsuarioBD> {
+public class UsuarioBD_DAO extends AbstractDAO<String, UsuarioBD> {
     public UsuarioBD_DAO() throws Exception {
         super(new ModeloBD(), new UsuarioBD_CRUD());
 
@@ -35,16 +35,16 @@ public class UsuarioBD_DAO extends AbstractDAO<Integer, UsuarioBD> {
     }
 
     @Override
-    public void setAddParameters(PreparedStatement stm, Integer id, UsuarioBD value) throws SQLException {
-        stm.setString(1, String.valueOf(id));
+    public void setAddParameters(PreparedStatement stm, String id, UsuarioBD value) throws SQLException {
+        stm.setString(1, id);
         stm.setString(2, value.getClave());
         stm.setInt(3, value.getRol());
     }
 
     @Override
-    public void setUpdateParameters(PreparedStatement stm, Integer id, UsuarioBD value) throws SQLException {
+    public void setUpdateParameters(PreparedStatement stm, String id, UsuarioBD value) throws SQLException {
         stm.setString(1, value.getClave());
         stm.setInt(2, value.getRol());
-        stm.setInt(3, id);
+        stm.setString(3, id);
     }
 }

@@ -24,11 +24,11 @@
         <div>
             <nav>
                 <ul>
-                    <li><a href="#">Inicio</li>
-                    <li><a href="#">Contactenos</li>
-                    <li><a href="#">Registro</li>
-                    <li><a href="#">Iniciar sesion</li>
-                    <li><a href="#">Asientos</li>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Contactenos</a></li>
+                    <li><a href="registroClientes.jsp">Registro</a></li>
+                    <li><a href="#">Iniciar sesion</a></li>
+                    <li><a href="#">Asientos</a></li>
                 </ul>
             </nav>
         </div>

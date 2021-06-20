@@ -23,7 +23,8 @@ import modelo.dao.UsuarioBD_DAO;
  * @author diana
  */
 public class ConjuntoUsuarios {
-      public ConjuntoUsuarios() {
+
+    public ConjuntoUsuarios() {
         try {
             usuarios = new UsuarioBD_DAO();
         } catch (Exception ex) {
@@ -31,22 +32,18 @@ public class ConjuntoUsuarios {
         }
     }
 
-    public void agregarUsuario(Usuario usuario) {
-        try {
-            usuarios.add(Integer.parseInt(usuario.getId()), new UsuarioBD(usuario));
-        } catch (IOException | SQLException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
+    public void agregarUsuario(Usuario usuario) throws SQLException, IOException {
+        usuarios.add(usuario.getId(), new UsuarioBD(usuario));
     }
 
     public boolean validaUsuario(String usuario_id, String clave) {
         try {
-            UsuarioBD usuarioBD = usuarios.retrieve(Integer.parseInt(usuario_id)); //aqui ya valida el id
+            UsuarioBD usuarioBD = usuarios.retrieve(usuario_id); //aqui ya valida el id
 
             if (usuarioBD != null) {
-                if(usuarioBD.getClave().equals(clave)){ //aqui valida la clave
+                if (usuarioBD.getClave().equals(clave)) { //aqui valida la clave
                     System.out.println(usuarioBD.getClave());
-                     System.out.println(clave);
+                    System.out.println(clave);
                     return true;
                 }
             }
@@ -55,17 +52,20 @@ public class ConjuntoUsuarios {
         }
         return false;
     }
-    
+
     public Usuario getUsuario(String usuario_id) {
         Usuario usuario = null;
 
         try {
-            UsuarioBD usuarioBD = usuarios.retrieve(Integer.parseInt(usuario_id));
+            UsuarioBD usuarioBD = usuarios.retrieve(usuario_id);
 
             if (usuarioBD != null) {
                 Rol rol = null;
-                if(usuarioBD.getRol() == 1){ rol = Rol.administrador;}
-                else if (usuarioBD.getRol() == 2) { rol = Rol.cliente;}
+                if (usuarioBD.getRol() == 1) {
+                    rol = Rol.administrador;
+                } else if (usuarioBD.getRol() == 2) {
+                    rol = Rol.cliente;
+                }
                 usuario = new Usuario(usuarioBD.getIdUsuario(), usuarioBD.getClave(), rol);
             }
         } catch (IOException | IllegalArgumentException | SQLException ex) {
@@ -82,12 +82,11 @@ public class ConjuntoUsuarios {
             List<UsuarioBD> usuariosBD = usuarios.listAll();
 
             for (UsuarioBD p : usuariosBD) {
-                
+
                 Rol rol = null;
-                if(p.getRol() == 1){
+                if (p.getRol() == 1) {
                     rol = Rol.administrador;
-                }
-                else if (p.getRol() == 2){
+                } else if (p.getRol() == 2) {
                     rol = Rol.cliente;
                 }
                 listaUsuarios.add(new Usuario(p.getIdUsuario(), p.getClave(), rol));

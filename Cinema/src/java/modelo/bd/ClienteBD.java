@@ -32,11 +32,11 @@ public class ClienteBD {
      public ClienteBD(Cliente cliente) {
         this(
               cliente.getId(),
-              cliente.getId(),
+              cliente.getIdCliente(),
               cliente.getApellidos(),
               cliente.getNombre(),
               cliente.getTelefono(),
-              cliente.getTarjetaPago()
+              cliente.getTarjeta_pago()
               );
     }
     /**
