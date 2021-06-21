@@ -32,24 +32,22 @@ function cargarPelicula(nombre) {
 }
 
 function mostrar(idx) {
-    var ref = document.getElementById("mod");
-    var titulo = document.getElementById("titulo");
-    var id = document.getElementById("id");
-    var sinopsis = document.getElementById("sinopsis");
-    var img = document.getElementById("pop-up-img");
-    var model_contanedor = document.getElementById("modal_contenedor");
-    if (ref) {
-        titulo = document.createTextNode('');
-        id = document.createTextNode('');
-        sinopsis = document.createTextNode('');
-
-
-
-
-        titulo = document.createTextNode('Nombre de la pelicula: \n' + idx.titulo);
-        id = document.createTextNode('El ID de la pelicula es: ' + idx.id_pelicula);
-        sinopsis = document.createTextNode('Sinopsis: ' + idx.movie_data);
+    var model_contenedor = document.getElementById("modal_contenedor");
+    
+    if(model_contenedor.childElementCount>1){
+        model_contenedor.removeChild(mod);
+    }
+    if (model_contenedor) {
+        var ref = document.createElement('div');
+        ref.setAttribute('class', 'moda');
+        ref.setAttribute('id', 'mod');
+        var titulo = document.createTextNode('Nombre de la pelicula: \n' + idx.titulo);
+        var id = document.createTextNode('El ID de la pelicula es: ' + idx.id_pelicula);
+        var sinopsis = document.createTextNode('Sinopsis: ' + idx.movie_data);
+        var img = document.createElement('img');
+        img.setAttribute('id', "pop-up-img");
         img.setAttribute('src', `${posterUrl}${idx.poster_path}`);
+
         ref.appendChild(titulo);
         ref.appendChild(document.createElement("br"));
         ref.appendChild(document.createElement("br"));
@@ -62,28 +60,13 @@ function mostrar(idx) {
         ref.appendChild(document.createElement("br"));
         ref.appendChild(document.createElement("br"));
 
+
+        ref.appendChild(document.createElement("br"));
+        ref.appendChild(document.createElement("br"));
+
         ref.appendChild(img);
-        model_contanedor.classList.add('show');
-//        var cerrar = document.createElement('button');
-//        cerrar.setAttribute('id', 'cerrar-btn');
-//        cerrar.appendChild(document.createTextNode("Cerrar"));
-//
-//        divModal.appendChild(title);
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(id);
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(sinopsis);
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(img);
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(document.createElement("br"));
-//        divModal.appendChild(cerrar);
-//        
-//        divContenedor.appendChild(divModal);
-//        ref.appendChild(divContenedor);
+        model_contenedor.appendChild(ref);
+        model_contenedor.classList.add('show');
     }
 }
 var btnCerrar = document.getElementById('cerrar-btn');
@@ -93,14 +76,5 @@ if (btnCerrar) {
         modal_contenedor.classList.remove('show');
     });
 }
-function alternar() {
-    var refA = document.getElementById("page-mask");
-    if (refA) {
-        if (refA.style.display === "none" || refA.style.display === "") {
-            refA.style.display = "block";
-        } else {
-            refA.style.display = "none";
-        }
-    }
-}
+
 

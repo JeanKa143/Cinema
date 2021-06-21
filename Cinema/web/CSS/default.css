@@ -83,7 +83,7 @@ button{
     background-color : #47a386;
     border:0;
     border-radius: 5px;
-    color:#fff;
+    color:black;
     font-size: 14px;
     padding: 10px 25px;
 }
@@ -114,7 +114,7 @@ button{
     opacity:1;
 }
 .moda{
-    background-color: #fff;
+    background-color:#00cc99;
     width: 600px;
     height: 500px;
     max-width: 100%;

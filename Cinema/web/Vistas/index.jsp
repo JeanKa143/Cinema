@@ -38,27 +38,19 @@
                 <table id="galeria" class="galeria">
             </section>
             <div id="modal_contenedor" class="modal-contenedor">
-                <div id="mod" class="moda">
-                    <h3 id="titulo">
-                        
-                    </h3>
-                    <h3 id="id">
-                        
-                    </h3>
-                    <h3 id="sinopsis">
-                        
-                    </h3>
+              
+                    
                     <button id="cerrar-btn">
                         Cerrar
                     </button>
+
                     
-                    <img id="pop-up-img">
-                    
-                </div>
+
+            
 
             </div>
-        </div>
 
+        </div>
         <footer>
 
         </footer>
