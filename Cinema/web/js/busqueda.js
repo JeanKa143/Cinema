@@ -23,6 +23,7 @@ function cargarPelicula(nombre) {
     var ref = document.getElementById("galeria");
     if (ref) {
         let request = new Request('../api/cartelera/' + nombre, {method: 'GET', headers: {}});
+        console.log(request);
         fetch(request).then(
                 resultado => resultado.json()
         ).then(resultado => {

@@ -27,6 +27,13 @@ async function inicio() {
                 session.setItem('id', resultado.id);
                 session.setItem('rol', resultado.rol);
                 alert('Sesión iniciada con exito');
+                if(resultado.rol==='administrador'){
+                    location.href="moduloAdministrador.jsp";
+                }
+                else{
+                    location.href="moduloCliente.jsp";
+                }
+                
             } else {
                 alert('Ya ha iniciado sesión');
             }
