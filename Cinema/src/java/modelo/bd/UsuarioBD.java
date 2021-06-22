@@ -17,6 +17,12 @@ public class UsuarioBD {
     private String id_usuario;
     private String clave;
     private int rol;
+
+    public UsuarioBD() {
+        this.id_usuario="";
+        this.clave="";
+        this.rol=0;
+    }
     
     public UsuarioBD(String id_usuario, String clave, int rol){
         this.id_usuario = id_usuario;

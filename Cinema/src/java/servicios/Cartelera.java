@@ -48,16 +48,7 @@ public class Cartelera {
         } catch (Exception ex) {
             throw new NotFoundException();
         }
-    }
-
-//    @GET
-//    @Path("{cedula}/imagen")
-//    @Produces("image/png")
-//    public Response getImge(@PathParam("cedula") String cedula) throws IOException {
-//        File file = new File(location+cedula);
-//        ResponseBuilder response = Response.ok((Object) file);
-//        return response.build();
-//    }    
+    }  
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void agregarPelicula(Pelicula p) {
@@ -68,40 +59,6 @@ public class Cartelera {
             throw new NotAcceptableException();
         }
     }
-
-//    @POST
-//    @Consumes(MediaType.MULTIPART_FORM_DATA)
-//    @Path("{cedula}/imagen")
-//    @RolesAllowed({"ADM"})
-//    public void addImage(@PathParam("cedula") String cedula, @FormDataParam("imagen") InputStream imagenStream) {
-//        try {
-//            int read = 0;
-//            byte[] bytes = new byte[1024];
-//
-//            OutputStream out = new FileOutputStream(new File(location + cedula));
-//            while ((read = imagenStream.read(bytes)) != -1) {
-//                out.write(bytes, 0, read);
-//            }
-//            out.flush();
-//            out.close();
-//        } catch (Exception ex) {
-//            throw new NotAcceptableException();
-//        }
-//    }
-//
-//    @GET
-//    @Produces({MediaType.APPLICATION_JSON})
-//    @Path("mujeres")
-//    public List<Persona> searchMujeres() {
-//        List<Persona> todos = Model.instance().personaSearch("");
-//        List<Persona> mujeres = new ArrayList<>();
-//        for (Persona p : todos) {
-//            if (p.getSexo().equals("F")) {
-//                mujeres.add(p);
-//            }
-//        };
-//        return mujeres;
-//    }
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @Path("filtrar")
@@ -113,7 +70,7 @@ public class Cartelera {
             if (p.getCartelera().equals(true)) {
                 filtrados.add(p);
             }
-        };
+        }
         return filtrados;
     }
 

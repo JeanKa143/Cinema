@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Usuario;
 import modelo.Usuario.Rol;
 import modelo.bd.UsuarioBD;
@@ -53,21 +55,34 @@ public class ConjuntoUsuarios {
         return false;
     }
 
+    public UsuarioBD get(String usuario_id) {
+        UsuarioBD c = null;
+        try {
+            c = usuarios.retrieve(usuario_id);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConjuntoUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ConjuntoUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalArgumentException ex) {
+            Logger.getLogger(ConjuntoUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return c;
+    }
+
     public Usuario getUsuario(String usuario_id) {
         Usuario usuario = null;
 
         try {
             UsuarioBD usuarioBD = usuarios.retrieve(usuario_id);
 
-            if (usuarioBD != null) {
-                Rol rol = null;
-                if (usuarioBD.getRol() == 1) {
-                    rol = Rol.administrador;
-                } else if (usuarioBD.getRol() == 2) {
-                    rol = Rol.cliente;
-                }
-                usuario = new Usuario(usuarioBD.getIdUsuario(), usuarioBD.getClave(), rol);
+            Rol rol = null;
+            if (usuarioBD.getRol() == 1) {
+                rol = Rol.administrador;
+            } else if (usuarioBD.getRol() == 2) {
+                rol = Rol.cliente;
             }
+            usuario = new Usuario(usuarioBD.getIdUsuario(), usuarioBD.getClave(), rol);
+
         } catch (IOException | IllegalArgumentException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }

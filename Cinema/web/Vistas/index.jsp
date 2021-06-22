@@ -17,17 +17,17 @@
     <body>   
         <header>
             <div class="buscar">
-                <input type="text" placeholder="Nombre Pelicula" id="busqueda">
+                <input type="text" placea holder="Nombre Pelicula" id="busqueda">
                 <button id="btn-buscar" type="button" class="btn-busca">Buscar</button>
             </div>
         </header>
         <div>
             <nav>
                 <ul>
-                    <li><a href="#">Inicio</a></li>
+                    <li><a href="index.jsp">Inicio</a></li>
                     <li><a href="#">Contactenos</a></li>
                     <li><a href="registroClientes.jsp">Registro</a></li>
-                    <li><a href="#">Iniciar sesion</a></li>
+                    <li><a href="login.jsp">Iniciar sesion</a></li>
                     <li><a href="#">Asientos</a></li>
                 </ul>
             </nav>
@@ -52,7 +52,6 @@
 
         </div>
         <footer>
-
         </footer>
     </body>
     <script src="../js/busqueda.js" type="text/javascript"></script>

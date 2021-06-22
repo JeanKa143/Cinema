@@ -21,21 +21,17 @@
         </jsp:useBean>
         <div id="wrapper">
             <h1>Login</h1>
-            <form method="GET" action="ServletLogin">
                 <p>
-                    <input type="number" min ="1" name="id" placeholder="Usuario" required/><br>
-                    <input type="password" name="clave" placeholder="Contraseña" required/>
+                    <input type="text" min ="1" id="id" placeholder="Usuario" required/><br>
+                    <input type="password" id="pass" placeholder="Contraseña" required/>
                 </p>
                 <p>
-                    <button type = "submit"> Acceder </button><br>
+                    <button onclick="inicio()"> Acceder </button><br>
                 </p>
-                <p>
-                    <a href="registroUusario.jsp" style="text-decoration:none">Registrarse</a>
-                </p>
-            </form>
             <p id="pfinal">
-                <a href="index.html" style="text-decoration:none">Volver</a>
+                <a href="index.jsp" style="text-decoration:none">Volver</a>
             </p>
         </div>
     </body>
+    <script src="../js/login.js" type="text/javascript"></script>
 </html>

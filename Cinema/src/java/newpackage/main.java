@@ -16,6 +16,7 @@ import modelo.conjuntos.ConjuntoFuncion;
 import modelo.conjuntos.ConjuntoPelicula;
 import modelo.conjuntos.ConjuntoTiquetes;
 import modelo.conjuntos.ConjuntoUsuarios;
+import servicios.ServicioLogin;
 
 
 
@@ -38,11 +39,11 @@ public class main {
 
     public static void main(String args[]) {
                  
-      ConjuntoPelicula p = new ConjuntoPelicula();
-     Pelicula a = p.getPelicula("CRUELLAs");
+     ConjuntoUsuarios c = new ConjuntoUsuarios();
      
-     System.out.println(a.getTitulo());
-     
+     System.out.println(c.getUsuario("luis").getId());
+     System.out.println(c.getUsuario("usuario1").getRol());
+     System.out.println(c.getUsuario("luis").getClave());
             
             
        

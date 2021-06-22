@@ -27,6 +27,7 @@ public class RegistroAplicacion extends Application {
         HashSet<Class<?>> classes = new HashSet<>();
         classes.add(Cartelera.class);
         classes.add(ServicioCliente.class);
+        classes.add(ServicioLogin.class);
 
         return classes;
     }

@@ -7,10 +7,9 @@
  * Curso: EIF209 ProgramacionIV
  * I Ciclo 2021
  */
-var url = "http://localhost:8085/Cinema";
 var posterUrl = "https://www.themoviedb.org/t/p/w1280";
 
-
+var session = window.sessionStorage;
 var btn = document.getElementById('btn-buscar');
 if (btn) {
     btn.addEventListener('click', () => {
@@ -20,21 +19,24 @@ if (btn) {
 }
 
 function cargarPelicula(nombre) {
+ 
     var ref = document.getElementById("galeria");
     if (ref) {
-        let request = new Request(url + '/api/cartelera/' + nombre, {method: 'GET', headers: {}});
+        let request = new Request('../api/cartelera/' + nombre, {method: 'GET', headers: {}});
         fetch(request).then(
                 resultado => resultado.json()
         ).then(resultado => {
             mostrar(resultado);
+        }).catch(() => {
+            alert("La pelicula que busca no se encuentra");
         });
     }
 }
 
 function mostrar(idx) {
     var model_contenedor = document.getElementById("modal_contenedor");
-    
-    if(model_contenedor.childElementCount>1){
+
+    if (model_contenedor.childElementCount > 1) {
         model_contenedor.removeChild(mod);
     }
     if (model_contenedor) {
