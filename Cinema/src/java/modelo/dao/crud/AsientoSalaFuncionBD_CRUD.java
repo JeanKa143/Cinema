@@ -69,5 +69,5 @@ public class AsientoSalaFuncionBD_CRUD extends AbstractCRUD{
     protected static final String LIST_BY_PARAMETER_CMD
             = "SELECT "
             + "fila, posicion, funcion_id, funcion_fecha, funcion_sala_cinema_id, funcion_sala_numero, ocupado "
-            + "FROM bd_cinema.asiento_funcion WHERE funcion_id = ? ORDER BY fila AND posicion; ";
+            + "FROM bd_cinema.asiento_funcion WHERE funcion_id = ? ORDER BY fila, posicion ASC; ";
 }

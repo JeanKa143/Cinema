@@ -33,45 +33,64 @@ public class Cartelera {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public List<Pelicula> listaPeliculas() {
-
-        ConjuntoPelicula conjunto = new ConjuntoPelicula();
-        return conjunto.getListaPeliculas();
+        return PELICULAS.getListaPeliculas();
     }
 
     @GET
-    @Path("{id}")
+    @Path("{titulo}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Pelicula buscarPeliculaID(@PathParam("id") String nombre) {
+    public Pelicula buscarPeliculaTitulo(@PathParam("titulo") String titulo) {
         try {
-            ConjuntoPelicula conjunto = new ConjuntoPelicula();
-            return conjunto.getPelicula(nombre);
+            return PELICULAS.getPeliculaPorTitulo(titulo);
         } catch (Exception ex) {
             throw new NotFoundException();
         }
-    }  
+    }
+
+    @GET
+    @Path("id/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getPeliculaPorId(@PathParam("id") String id) {
+        Pelicula p = PELICULAS.getPeliculaPorId(id);
+
+        if (p == null) {
+            throw new NotFoundException();
+        }
+
+        return p.toJSON().toString();
+    }
+
+//    @GET
+//    @Path("{cedula}/imagen")
+//    @Produces("image/png")
+//    public Response getImge(@PathParam("cedula") String cedula) throws IOException {
+//        File file = new File(location+cedula);
+//        ResponseBuilder response = Response.ok((Object) file);
+//        return response.build();
+//    }    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void agregarPelicula(Pelicula p) {
         try {
-            ConjuntoPelicula conjunto = new ConjuntoPelicula();
-            conjunto.agregarPelicula(p);
+            PELICULAS.agregarPelicula(p);
         } catch (Exception ex) {
             throw new NotAcceptableException();
         }
     }
+
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @Path("filtrar")
     public List<Pelicula> filtrar() {
-        ConjuntoPelicula conjunto = new ConjuntoPelicula();
-        List<Pelicula> todos = conjunto.getListaPeliculas();
+        List<Pelicula> todos = PELICULAS.getListaPeliculas();
         List<Pelicula> filtrados = new ArrayList<>();
         for (Pelicula p : todos) {
-            if (p.getCartelera().equals(true)) {
+            if (p.getCartelera()) {
                 filtrados.add(p);
             }
         }
         return filtrados;
     }
 
+    private static final ConjuntoPelicula PELICULAS = new ConjuntoPelicula();
 }

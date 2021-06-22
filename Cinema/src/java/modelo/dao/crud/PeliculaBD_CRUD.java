@@ -37,6 +37,10 @@ public class PeliculaBD_CRUD extends AbstractCRUD {
     public String getDeleteCmd() {
         return DELETE_CMD;
     }
+    
+    public String getRetrieveByIdCmd(){
+        return RETRIEVE_BY_ID_CMD;
+    }
 
     protected static final String LIST_CMD
             = "SELECT "
@@ -61,4 +65,9 @@ public class PeliculaBD_CRUD extends AbstractCRUD {
     protected static final String DELETE_CMD
             = "DELETE FROM bd_cinema.pelicula "
             + "WHERE id_pelicula = ?; ";
+    
+        protected static final String RETRIEVE_BY_ID_CMD
+            = "SELECT "
+            + "id_pelicula, titulo, poster_path, movie_data, cartelera "
+            + "FROM bd_cinema.pelicula WHERE id_pelicula = ?; ";
 }

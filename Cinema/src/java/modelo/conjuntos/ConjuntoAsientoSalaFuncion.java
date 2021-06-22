@@ -53,6 +53,10 @@ public class ConjuntoAsientoSalaFuncion {
 
         return asiento;
     }
+    
+    public void actualizarAsiento(AsientoSalaFuncion asiento) throws SQLException, IOException{
+        asientos.update(0, new AsientoSalaFuncionBD(asiento));
+    }
 
     public List<AsientoSalaFuncion> getListaAsientos() {
         List<AsientoSalaFuncion> listasAsientos = new ArrayList<>();

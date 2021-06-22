@@ -10,6 +10,7 @@
 package modelo;
 
 import java.io.Serializable;
+import org.json.JSONObject;
 
 public class Pelicula implements Serializable {
 
@@ -18,11 +19,28 @@ public class Pelicula implements Serializable {
         this.titulo = titulo;
         this.poster_path = poster_path;
         this.movie_data = movie_data;
-        this.cartelera=cartelera;
+        this.cartelera = cartelera;
+    }
+
+    public Pelicula(JSONObject j) {
+        this(j.getString("id_pelicula"), j.getString("titulo"), j.getString("poster_path"), j.getString("movie_data"),
+                j.getBoolean("cartelera"));
     }
 
     public Pelicula() {
-        this(null, null, null, null,false);
+        this(null, null, null, null, false);
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+
+        r.put("id_pelicula", id_pelicula);
+        r.put("titulo", titulo);
+        r.put("poster_path", poster_path);
+        r.put("movie_data", movie_data);
+        r.put("cartelera", cartelera);
+
+        return r;
     }
 
     public String getId_pelicula() {
@@ -57,13 +75,14 @@ public class Pelicula implements Serializable {
         this.movie_data = movie_data;
     }
 
-    public Boolean getCartelera(){
+    public Boolean getCartelera() {
         return this.cartelera;
     }
-    public void setCartelera(Boolean cartelera){
-        this.cartelera=cartelera;
+
+    public void setCartelera(Boolean cartelera) {
+        this.cartelera = cartelera;
     }
-   
+
     private String id_pelicula;
     private String titulo;
     private String poster_path;

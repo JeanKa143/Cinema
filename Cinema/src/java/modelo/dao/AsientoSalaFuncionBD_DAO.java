@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.AsientoSalaFuncion;
 import modelo.bd.AsientoSalaFuncionBD;
 import modelo.dao.crud.AsientoSalaFuncionBD_CRUD;
 

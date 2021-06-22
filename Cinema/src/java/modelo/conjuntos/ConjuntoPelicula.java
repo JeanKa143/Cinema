@@ -35,15 +35,32 @@ public class ConjuntoPelicula {
         }
     }
 
-    public Pelicula getPelicula(String nombrePelicula) {
+    public Pelicula getPeliculaPorTitulo(String titulo) {
         Pelicula pelicula = null;
         try {
-            PeliculaBD peliculaBD = peliculas.retrieve(nombrePelicula.toLowerCase());
+            PeliculaBD peliculaBD = peliculas.retrieve(titulo.toLowerCase());
 
             if (peliculaBD != null) {
                 pelicula = new Pelicula(peliculaBD.getId_pelicula(), peliculaBD.getTitulo(), peliculaBD.getPoster_path(),
-                        peliculaBD.getMovie_data(), convertirBool(peliculaBD.getCartelera()));
-               
+                        peliculaBD.getMovie_data(), peliculaBD.getCartelera() == 1);
+
+            }
+        } catch (IOException | IllegalArgumentException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
+
+        return pelicula;
+    }
+
+    public Pelicula getPeliculaPorId(String id) {
+        Pelicula pelicula = null;
+
+        try {
+            PeliculaBD peliculaBD = peliculas.retrieveById(id);
+
+            if (peliculaBD != null) {
+                pelicula = new Pelicula(peliculaBD.getId_pelicula(), peliculaBD.getTitulo(), peliculaBD.getPoster_path(),
+                        peliculaBD.getMovie_data(), peliculaBD.getCartelera() == 1);
             }
         } catch (IOException | IllegalArgumentException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
@@ -59,7 +76,8 @@ public class ConjuntoPelicula {
             List<PeliculaBD> pelicualasBD = peliculas.listAll();
 
             for (PeliculaBD p : pelicualasBD) {
-                listaPeliculas.add(new Pelicula(p.getId_pelicula(), p.getTitulo(), p.getPoster_path(), p.getMovie_data(), convertirBool(p.getCartelera())));
+                listaPeliculas.add(new Pelicula(p.getId_pelicula(), p.getTitulo(), p.getPoster_path(), p.getMovie_data(),
+                        p.getCartelera() == 1));
             }
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
@@ -68,11 +86,5 @@ public class ConjuntoPelicula {
         return listaPeliculas;
     }
 
-    Boolean convertirBool(int x) {
-        if(x==1){
-            return true;
-        }
-        return false;
-    }
     private PeliculaBD_DAO peliculas;
 }

@@ -27,6 +27,16 @@ public class AsientoSalaFuncionBD implements Serializable {
         this.ocupado = ocupado;
     }
 
+    public AsientoSalaFuncionBD(char fila, int posicion, int funcion_id, Date funcion_fecha, int funcion_sala_cinema, int funcion_sala_numero) {
+        this.fila = fila;
+        this.posicion = posicion;
+        this.funcion_id = funcion_id;
+        this.funcion_fecha = funcion_fecha;
+        this.funcion_sala_cinema_id = funcion_sala_cinema;
+        this.funcion_sala_numero = funcion_sala_numero;
+        this.ocupado = false;
+    }
+
     public AsientoSalaFuncionBD(AsientoSalaFuncion asientoSalaFuncion, int funcion_id, Date funcion_fecha,
             int funcion_sala_cinema_id, int funcion_sala_numero) {
         this(
@@ -40,17 +50,18 @@ public class AsientoSalaFuncionBD implements Serializable {
         );
     }
 
-    public AsientoSalaFuncionBD(char fila, int posicion, int funcion_id, Date funcion_fecha, int funcion_sala_cinema, int funcion_sala_numero) {
-        this.fila = fila;
-        this.posicion = posicion;
-        this.funcion_id = funcion_id;
-        this.funcion_fecha = funcion_fecha;
-        this.funcion_sala_cinema_id = funcion_sala_cinema;
-        this.funcion_sala_numero = funcion_sala_numero;
-        this.ocupado=false;
+    public AsientoSalaFuncionBD(AsientoSalaFuncion asientoSalaFuncion) {
+        this(
+                asientoSalaFuncion.getFila(),
+                asientoSalaFuncion.getPosicion(),
+                0,
+                null,
+                0,
+                0,
+                !asientoSalaFuncion.isDisponible()
+        );
     }
-    
-    
+
     public AsientoSalaFuncionBD() {
         this(null, 0, null, 0, 0);
     }

@@ -10,6 +10,7 @@
 package modelo;
 
 import java.io.Serializable;
+import org.json.JSONObject;
 
 public class AsientoSalaFuncion implements Serializable {
 
@@ -19,8 +20,35 @@ public class AsientoSalaFuncion implements Serializable {
         this.disponible = disponible;
     }
 
+    public AsientoSalaFuncion(JSONObject j) {
+        this(j.getString("fila").charAt(0), j.getInt("posicion"), j.getBoolean("disponible"));
+    }
+
     public AsientoSalaFuncion() {
         this(' ', 0, false);
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+
+        r.put("fila", Character.toString(fila));
+        r.put("posicion", posicion);
+        r.put("disponible", disponible);
+
+        return r;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder r = new StringBuilder();
+
+        r.append("{");
+        r.append(String.format("Fila: %s%n", fila));
+        r.append(String.format("Posicion: %d%n", posicion));
+        r.append(String.format("Fila: %s%n", disponible));
+        r.append("}");
+
+        return r.toString();
     }
 
     public char getFila() {

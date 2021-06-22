@@ -40,7 +40,7 @@ public class main {
     public static void main(String args[]) {
                  
      ConjuntoUsuarios c = new ConjuntoUsuarios();
-     
+
      System.out.println(c.getUsuario("luis").getId());
      System.out.println(c.getUsuario("usuario1").getRol());
      System.out.println(c.getUsuario("luis").getClave());

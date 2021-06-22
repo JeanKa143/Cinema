@@ -10,6 +10,8 @@
 package modelo.dao;
 
 import db.dao.AbstractDAO;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,5 +51,22 @@ public class PeliculaBD_DAO extends AbstractDAO<String, PeliculaBD> {
         stm.setObject(3, value.getMovie_data());
         stm.setObject(4, value.getCartelera());
         stm.setString(5, id);
+    }
+
+    public PeliculaBD retrieveById(String id) throws SQLException, IOException, IllegalArgumentException {
+        PeliculaBD r = null;
+        try (Connection cnx = getDatabase().getConnection();
+                PreparedStatement stm = cnx.prepareStatement(((PeliculaBD_CRUD) getCRUD()).getRetrieveByIdCmd())) {
+            stm.clearParameters();
+            stm.setString(1, id);
+            try (ResultSet rs = stm.executeQuery()) {
+                if (rs.next()) {
+                    r = getRecord(rs);
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
+        return r;
     }
 }
