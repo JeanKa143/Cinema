@@ -36,4 +36,19 @@ function actualizar(ref, info) {
     }
 }
 
+function login(){
+    if(session.getItem('rol')===null){
+        location.href="login.jsp";
+    }
+    else{
+        if(session.getItem('rol')==="administrador"){
+            location.href="moduloAdministrador.jsp";
+        }
+        else{
+            location.href="moduloCliente.jsp";
+        }
+    }
+    
+}
+
 window.onload = init;

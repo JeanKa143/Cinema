@@ -9,6 +9,8 @@
  */
 package modelo.bd;
 
+import org.json.JSONObject;
+
 /**
  *
  * @author Luis Fallas
@@ -24,6 +26,10 @@ public class SalaBD {
         this.capacidad = capacidad;
     }
 
+    public SalaBD(JSONObject j){
+        this(1,j.getInt("numero"),j.getInt("capacidad"));
+    }
+    
     /**
      * @return the cinema_id
      */

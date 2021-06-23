@@ -16,7 +16,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import modelo.Usuario;
-import modelo.bd.UsuarioBD;
 import modelo.conjuntos.ConjuntoUsuarios;
 import org.json.JSONObject;
 

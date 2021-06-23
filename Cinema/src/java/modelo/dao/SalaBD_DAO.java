@@ -36,14 +36,14 @@ public class SalaBD_DAO extends AbstractDAO<Integer, SalaBD> {
     
     @Override
     public void setAddParameters(PreparedStatement stm, Integer id, SalaBD value) throws SQLException {
-        stm.setInt(1, value.getCinema_id());
+        stm.setInt(1, 1);
         stm.setInt(2, id);        
         stm.setInt(3, value.getCapacidad());
     }
     
     @Override
     public void setUpdateParameters(PreparedStatement stm, Integer id, SalaBD value) throws SQLException {
-        stm.setInt(1, value.getCinema_id()); //cambiar por el ID del cinema
+        stm.setInt(1,1); 
         stm.setInt(2, value.getCapacidad());
         stm.setInt(3, id);
     }

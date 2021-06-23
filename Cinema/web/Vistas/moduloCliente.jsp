@@ -9,9 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="../CSS/default.css" rel="stylesheet" type="text/css"/>
+        <title>Cliente</title>
     </head>
     <body>
-        <h1>ESTE ES EL MODULO CLIENTE</h1>
+        <h1>Modulo Cliente</h1>
+          <nav>
+                <ul>
+                    <li><a href="index.jsp">Volver al menu principal</a></li>
+                    <li><a onclick="cerrar()">Cerrar Sesión</li>
+                </ul>
+            </nav>
     </body>
+    <script src="../js/cliente.js" type="text/javascript"></script>
 </html>

@@ -8,19 +8,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Funcion;
 import modelo.Pelicula;
+import modelo.Sala;
 import modelo.Tiquete;
 import modelo.Usuario;
 import modelo.bd.AsientoSalaFuncionBD;
 import modelo.bd.FuncionBD;
 import modelo.conjuntos.ConjuntoFuncion;
 import modelo.conjuntos.ConjuntoPelicula;
+import modelo.conjuntos.ConjuntoSalas;
 import modelo.conjuntos.ConjuntoTiquetes;
 import modelo.conjuntos.ConjuntoUsuarios;
+import org.json.JSONObject;
 import servicios.ServicioLogin;
-
-
-
-
+import servicios.ServicioSalas;
 
 /*
  * Integrantes del equipo:
@@ -38,14 +38,7 @@ import servicios.ServicioLogin;
 public class main {
 
     public static void main(String args[]) {
-                 
-     ConjuntoUsuarios c = new ConjuntoUsuarios();
 
-     System.out.println(c.getUsuario("luis").getId());
-     System.out.println(c.getUsuario("usuario1").getRol());
-     System.out.println(c.getUsuario("luis").getClave());
-            
-            
-       
+     
     }
 }

@@ -15,6 +15,12 @@ public class Sala {
     private int id_Sala;
     private int capacidad;
     private List<Funcion> funciones;
+
+    public Sala() {
+        this.id_Sala=0;
+        this.capacidad=0;
+        this.funciones=null;
+    }
     
      public Sala(int id_Sala, int capacidad) {
         this.id_Sala = id_Sala;
@@ -22,6 +28,8 @@ public class Sala {
         funciones=null;
 
     }
+     
+    
 
     /**
      * @return the id_Sala

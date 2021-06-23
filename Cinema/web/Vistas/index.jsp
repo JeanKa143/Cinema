@@ -11,7 +11,7 @@
         <title>Cinema</title>
         <meta charset="UTF-8" />
         <link href="../CSS/default.css" rel="stylesheet" type="text/css"/>
-        <script src="../js/cartelera.js" type="text/javascript"></script>
+
     </head>
 
     <body>   
@@ -27,7 +27,7 @@
                     <li><a href="index.jsp">Inicio</a></li>
                     <li><a href="#">Contactenos</a></li>
                     <li><a href="registroClientes.jsp">Registro</a></li>
-                    <li><a href="login.jsp">Iniciar sesion</a></li>
+                    <li><a onclick="login()">Iniciar sesion</a></li>
                     <li><a href="#">Asientos</a></li>
                 </ul>
             </nav>
@@ -38,15 +38,15 @@
                 <table id="galeria" class="galeria">
             </section>
             <div id="modal_contenedor" class="modal-contenedor">
-              
-                    
-                    <button id="cerrar-btn">
-                        Cerrar
-                    </button>
 
-                    
 
-            
+                <button id="cerrar-btn">
+                    Cerrar
+                </button>
+
+
+
+
 
             </div>
 
@@ -55,4 +55,5 @@
         </footer>
     </body>
     <script src="../js/busqueda.js" type="text/javascript"></script>
+    <script src="../js/cartelera.js" type="text/javascript"></script>
 </html>
