@@ -36,8 +36,9 @@
             <h2>
                 Cartelera
             </h2>
-            <section>
-                <table id="galeria" class="galeria">
+           <section>
+                <h2 id='titular' name='titular'></h2>
+                <div id="galeria" class="galeria"></div>
             </section>
             <div id="modal_contenedor" class="modal-contenedor">
                 <button id="cerrar-btn">
@@ -48,6 +49,6 @@
         <footer>
         </footer>
     </body>
-    <script src="../js/busqueda.js" type="text/javascript"></script>
     <script src="../js/cartelera.js" type="text/javascript"></script>
+    <script src="../js/busqueda.js" type="text/javascript"></script>
 </html>

@@ -1,6 +1,5 @@
 var url = "http://localhost:8085/Cinema";
 var posterUrl = "https://www.themoviedb.org/t/p/w1280";
-
 var session = window.sessionStorage;
 
 function init() {
@@ -25,8 +24,19 @@ function actualizar(ref, info) {
     for (var i = 0; i < Object.keys(info).length; i++) {
         var img = document.createElement('IMG');
         img.setAttribute('src', `${posterUrl}${info[i].poster_path}`);
+        img.setAttribute('class', 'galery_item');
         refSeccion.appendChild(img);
     }
+    
+    let imagenes = document.querySelectorAll('.galery_item');
+    let titular = document.querySelector('#titular');
+
+    for (let i = 0; i < imagenes.length; i++) {
+         imagenes[i].addEventListener('mouseover', function() {
+        
+         titular.innerText = `${info[i].titulo}` + '\n' + 'Sinopsis: ' + `${info[i].movie_data}`;
+     });
+     }
 }
 
 function login(){

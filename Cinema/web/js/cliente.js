@@ -18,6 +18,8 @@
  * I Ciclo 2021
  */
 var session = window.sessionStorage;
+var url = "http://localhost:8085/Cinema";
+var posterUrl = "https://www.themoviedb.org/t/p/w1280";
 
 function cerrar(){
     session.removeItem('id');
@@ -25,9 +27,14 @@ function cerrar(){
     location.href = "index.jsp";
 }
 
+function butacas(){
+    location.href = "eleccionAsientoSala.jsp";
+}
+
 function getNombreCliente(){
    document.getElementById("titulo").innerHTML = "Bienvenido, " + session.getItem('id');
    cargarCartelera();
 }
 
-window.onload = getNombreCliente;
+
+window.onload = getNombreCliente; 
