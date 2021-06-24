@@ -52,7 +52,7 @@ ul{
 
 }
 li:hover{
-    background: #66ccff;
+    background: #47a386;
 }
 
 li{
@@ -63,6 +63,10 @@ li{
     text-decoration: none;
     text-align: center;
 
+}
+
+a{
+    color: white;
 }
 .galeria {
     border: none;
@@ -98,7 +102,7 @@ button{
 
 .modal-contenedor{
     display:flex;
-    background: rgba(255,240,196,0.8);
+    background: #444444;
     align-items: center;
     justify-content: center;
     position:fixed;
@@ -114,7 +118,7 @@ button{
     opacity:1;
 }
 .moda{
-    background-color:#00cc99;
+    background-color:#444444;
     width: 600px;
     height: 500px;
     max-width: 100%;
@@ -123,3 +127,4 @@ button{
     box-shadow: 0 2px 4px rgba (0,0,0,0.2);
     text-align: center;
 }
+

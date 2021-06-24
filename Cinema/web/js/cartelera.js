@@ -2,7 +2,9 @@ var url = "http://localhost:8085/Cinema";
 var posterUrl = "https://www.themoviedb.org/t/p/w1280";
 var session = window.sessionStorage;
 
+
 function init() {
+    alert("Posicione el cursor sobre una pelicula para ver la sinopsis y haga click sobre la pelicula para reservar entradas");
     cargarCartelera();
 }
 
