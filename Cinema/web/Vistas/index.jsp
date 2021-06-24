@@ -40,18 +40,10 @@
                 <table id="galeria" class="galeria">
             </section>
             <div id="modal_contenedor" class="modal-contenedor">
-
-
                 <button id="cerrar-btn">
                     Cerrar
                 </button>
-
-
-
-
-
             </div>
-
         </div>
         <footer>
         </footer>
