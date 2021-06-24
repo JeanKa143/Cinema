@@ -59,25 +59,8 @@ public class Cartelera {
 
         return p.toJSON().toString();
     }
-
-//    @GET
-//    @Path("{cedula}/imagen")
-//    @Produces("image/png")
-//    public Response getImge(@PathParam("cedula") String cedula) throws IOException {
-//        File file = new File(location+cedula);
-//        ResponseBuilder response = Response.ok((Object) file);
-//        return response.build();
-//    }    
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void agregarPelicula(Pelicula p) {
-        try {
-            PELICULAS.agregarPelicula(p);
-        } catch (Exception ex) {
-            throw new NotAcceptableException();
-        }
-    }
-
+  
+   
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     @Path("filtrar")

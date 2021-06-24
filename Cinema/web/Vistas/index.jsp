@@ -33,7 +33,9 @@
             </nav>
         </div>
         <div id="contents">
-
+            <h2>
+                Cartelera
+            </h2>
             <section>
                 <table id="galeria" class="galeria">
             </section>

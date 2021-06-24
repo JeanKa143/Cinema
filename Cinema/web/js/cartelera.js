@@ -1,11 +1,6 @@
 var url = "http://localhost:8085/Cinema";
 var posterUrl = "https://www.themoviedb.org/t/p/w1280";
 
-var APIKEY = "api_key=0d794e8c0e28bd18cda507adafeda032"; //llave
-var BASE_URL = "https://api.themoviedb.org/3"; //solicitud de API
-var API_URL = BASE_URL + "/discover/movie?sort_by=popularity.desc&" //link de peliculas más populares
-        + APIKEY;
-
 var session = window.sessionStorage;
 
 function init() {
@@ -14,8 +9,6 @@ function init() {
 
 
 function cargarCartelera() {
-    var c = session.getItem('rol');
-    console.log(c);
     var ref = document.getElementById("galeria");
     if (ref) {
         let request = new Request('../api/cartelera/filtrar', {method: 'GET', headers: {}});

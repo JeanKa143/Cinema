@@ -18,6 +18,7 @@ function verificar(idFormulario) {
     return false;
 }
 
+
 async function verificarSala(formulario) {
     let f = formulario;
 
@@ -28,6 +29,7 @@ async function verificarSala(formulario) {
     }
 }
 
+//Verifica si ya existe una sala registrada con la identificacion brindada por el usuario.
 async function existeSala(formulario) {
     let f = formulario;
     let request = new Request(`../api/salas/${f["numero"].value}`, {method: 'GET'});
@@ -40,6 +42,7 @@ async function existeSala(formulario) {
     return true;
 }
 
+//Se envian los datos del cliente al servidor para registrarlo en la base de datos
 function agregarSala(formulario) {
     var f = formulario;
     let request = new Request('../api/salas',
