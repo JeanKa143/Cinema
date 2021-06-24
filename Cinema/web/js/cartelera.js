@@ -37,6 +37,14 @@ function actualizar(ref, info) {
          titular.innerText = `${info[i].titulo}` + '\n' + 'Sinopsis: ' + `${info[i].movie_data}`;
      });
      }
+
+    for (let i = 0; i < imagenes.length; i++) {
+         imagenes[i].addEventListener('click', function() {
+             if(session.getItem('id') !== null)
+                    location.href="eleccionAsientoSala.jsp";
+             else  location.href="login.jsp";
+     });
+     }
 }
 
 function login(){
