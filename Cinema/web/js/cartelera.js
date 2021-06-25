@@ -35,18 +35,27 @@ function actualizar(ref, info) {
 
     for (let i = 0; i < imagenes.length; i++) {
          imagenes[i].addEventListener('mouseover', function() {
-        
-         titular.innerText = `${info[i].titulo}` + '\n' + 'Sinopsis: ' + `${info[i].movie_data}`;
+             titular.innerHTML = `${info[i].titulo}` + '<br> Sinopsis: ' + `${info[i].movie_data}`;
      });
      }
-
+     
+    let contador = 0;
     for (let i = 0; i < imagenes.length; i++) {
          imagenes[i].addEventListener('click', function() {
-             if(session.getItem('id') !== null)
-                    location.href="eleccionAsientoSala.jsp";
+             if(session.getItem('id') !== null){
+                titular.innerHTML = `${info[i].titulo}` + ' ha sido seleccionada para la compra';
+                titular.setAttribute('value', `${info[i].titulo}`);
+                if(contador === 0){
+                    contador++;
+                    cargarButacas();
+                }
+                else{
+                    location.reload();
+                }
+             }
              else  location.href="login.jsp";
      });
-     }
+    }
 }
 
 function login(){

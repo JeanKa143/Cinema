@@ -27,14 +27,7 @@ function cerrar(){
     location.href = "index.jsp";
 }
 
-function butacas(){
-    location.href = "eleccionAsientoSala.jsp";
-}
-
 function getNombreCliente(){
    document.getElementById("titulo").innerHTML = "Bienvenido, " + session.getItem('id');
    cargarCartelera();
 }
-
-
-window.onload = getNombreCliente; 

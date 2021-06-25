@@ -28,7 +28,7 @@
                     <li><a href="#" style="text-decoration: none">Contactenos</a></li>
                     <li><a href="registroClientes.jsp" style="text-decoration: none">Registro</a></li>
                     <li><a onclick="login()">Iniciar sesion</a></li>
-                    <li><a href="#" style="text-decoration: none">Asientos</a></li>
+                    <li><a href="eleccionAsientoSala.jsp" style="text-decoration: none">Asientos</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,6 +40,7 @@
                 <h2 id='titular' name='titular'></h2>
                 <div id="galeria" class="galeria"></div>
             </section>
+            
             <div id="modal_contenedor" class="modal-contenedor">
                 <button id="cerrar-btn">
                     Cerrar
