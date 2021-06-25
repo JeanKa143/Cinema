@@ -14,7 +14,7 @@ const button = document.getElementById('button');
 const gallery = document.getElementById('gallery');
 let cantidadButacas = 0;
 let butacas =  document.getElementById('butacas');
-        
+  /*      
 gallery.addEventListener('contextmenu', (e) => {
     if (cantidadButacas > 0 ){
         cantidadButacas--;
@@ -23,13 +23,22 @@ gallery.addEventListener('contextmenu', (e) => {
     e.target.classList.remove('red');
     butacas.innerHTML = `${cantidadButacas}`;
     butacas.setAttribute("value", cantidadButacas);
-});
+});*/
 
 gallery.addEventListener('click', (e) => {
-     e.target.classList.add('red');
-     cantidadButacas++;
-     butacas.innerHTML = `${cantidadButacas}`;
-     butacas.setAttribute("value", cantidadButacas);
+     if(e.target.classList.value === 'gallery_item red'){
+          cantidadButacas--;
+          e.target.classList.remove('red');
+          butacas.innerHTML = `${cantidadButacas}`;
+          butacas.setAttribute("value", cantidadButacas);
+     }
+     else{
+         e.target.classList.add('red');
+        cantidadButacas++;
+        butacas.innerHTML = `${cantidadButacas}`;
+        butacas.setAttribute("value", cantidadButacas);
+     }
+     
 });
 
 let titular = document.getElementById('titular');
