@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="registroPeliculas.jsp">Registrar nuevas peliculas</a></li>
                 <li><a href="registroSalas.jsp">Registrar nuevas salas</a></li>
-                <li><a href="#">Actualizar la cartelera</a></li>
+                <li><a href="actualizarCartelera.jsp">Actualizar la cartelera</a></li>
                 <li><a href="#">Programar proyecciones</a></li>
                 <li><a href="#">Buscar tiquetes</a></li>
                 <li><a href="index.jsp">Volver al menu principal</a></li>

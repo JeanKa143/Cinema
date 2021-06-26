@@ -9,11 +9,15 @@
  */
 package servicios;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotAcceptableException;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -48,13 +52,27 @@ public class ServicioPeliculas {
     public void addPelicula(String pelicula) {
         Pelicula c = new Pelicula(new JSONObject(pelicula));
         try {
-           PELICULA.agregarPelicula(c);
-        }catch (Exception ex) {
+            PELICULA.agregarPelicula(c);
+        } catch (Exception ex) {
             throw new NotAcceptableException();
         }
-       
+
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updatePelicula(String pelicula) {
+        Pelicula p = new Pelicula(new JSONObject(pelicula));
+
+        try {
+            PELICULA.actualizarPelicula(p);
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            throw new InternalServerErrorException();
+        }
+
     }
 
     private static final ConjuntoPelicula PELICULA = new ConjuntoPelicula();
-   
+
 }

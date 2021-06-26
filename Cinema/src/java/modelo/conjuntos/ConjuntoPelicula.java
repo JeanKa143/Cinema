@@ -35,6 +35,10 @@ public class ConjuntoPelicula {
         }
     }
 
+    public void actualizarPelicula(Pelicula pelicula) throws SQLException, IOException {
+        peliculas.update(pelicula.getId_pelicula(), new PeliculaBD(pelicula));
+    }
+
     public Pelicula getPeliculaPorTitulo(String titulo) {
         Pelicula pelicula = null;
         try {

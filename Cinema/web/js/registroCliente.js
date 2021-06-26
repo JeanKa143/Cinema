@@ -77,7 +77,7 @@ function agregarCliente(formulario) {
                         window.alert('Ha ocurriodo un error al procesar la información.');
                     }
                 } else {
-                    window.location = "login.jsp"; //Cambiar: redireccionar al login!!!!!
+                    window.location = "login.jsp";
                 }
             });
 }
