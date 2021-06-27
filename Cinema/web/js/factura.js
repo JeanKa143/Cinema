@@ -13,7 +13,7 @@ function agregarFactura(idFormulario) {
     let date = new Date();
     let idCliente = session.getItem('id');
     console.log(idCliente);
-s
+
     let request = new Request(`../api/facturas/${idCliente}`,
             {
                 method: 'POST',
@@ -34,6 +34,7 @@ s
             .then(resultado => {
                 if (resultado.ok) {
                     window.alert('Funcion creada con exito.');
+            
                 } else {
                     window.alert('Ha ocurrido un problema.');
                 }
