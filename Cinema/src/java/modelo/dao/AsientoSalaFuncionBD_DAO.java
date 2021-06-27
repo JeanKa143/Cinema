@@ -17,7 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.AsientoSalaFuncion;
 import modelo.bd.AsientoSalaFuncionBD;
 import modelo.dao.crud.AsientoSalaFuncionBD_CRUD;
 
@@ -45,7 +44,7 @@ public class AsientoSalaFuncionBD_DAO extends AbstractDAO<Integer, AsientoSalaFu
         stm.setString(1, String.valueOf(value.getFila()));
         stm.setInt(2, value.getPosicion());
         stm.setInt(3, value.getFuncion_id());
-        stm.setDate(4, new java.sql.Date(value.getFuncion_fecha().getTime()));
+        stm.setTimestamp(4, new java.sql.Timestamp(value.getFuncion_fecha().getTime()));
         stm.setInt(5, value.getFuncion_sala_cinema_id());
         stm.setInt(6, value.getFuncion_sala_numero());
         stm.setInt(7, (value.isOcupado() ? 1 : 0));

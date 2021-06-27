@@ -16,7 +16,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <h1>Cartelera</h1>
+            <h1>Programar Proyección</h1>
             <form id="formulario" action="#" onsubmit="return crearProyeccion('formulario');">
                 <section id="busqueda">
                     <p>Buscar pelicula:</p>

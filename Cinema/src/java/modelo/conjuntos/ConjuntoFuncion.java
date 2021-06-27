@@ -41,8 +41,8 @@ public class ConjuntoFuncion implements Serializable {
     public void agregar(FuncionBD nuevaFuncion) throws SQLException, IOException {
         funcion.add(nuevaFuncion.getId_funcion(), nuevaFuncion);
     }
-    
-    public int agregar2(FuncionBD nuevaFuncion) throws SQLException, IOException{
+
+    public int agregar2(FuncionBD nuevaFuncion) throws SQLException, IOException {
         return funcion.add(nuevaFuncion);
     }
 
@@ -52,6 +52,17 @@ public class ConjuntoFuncion implements Serializable {
             FuncionBD fun = funcion.retrieve(id);
             Funcion aux = new Funcion(fun.getFecha(), fun.getPelicula_id());
             return aux;
+
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            return null;
+        }
+    }
+
+    public FuncionBD obtener2(int id) {
+        try {
+            FuncionBD fun = funcion.retrieve(id);
+            return fun;
 
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());

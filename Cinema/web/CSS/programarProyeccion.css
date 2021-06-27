@@ -14,4 +14,14 @@ I Ciclo 2021
 
 @import "actualizarCartelera.css";
 
+#wrapper{
+    height:550px;
+}
 
+.oculto{
+    margin-bottom: 5px;
+}
+
+.oculto input{
+    margin-bottom: 5px;
+}

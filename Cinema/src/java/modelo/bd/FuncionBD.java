@@ -10,12 +10,14 @@
 package modelo.bd;
 
 import java.util.Date;
+import org.json.JSONObject;
 
 /**
  *
  * @author Luis Fallas
  */
 public class FuncionBD {
+
     private int id_funcion;
     private Date fecha;
     private int sala_cinema_id;
@@ -28,6 +30,18 @@ public class FuncionBD {
         this.sala_cinema_id = sala_cinema_id;
         this.sala_numero = sala_numero;
         this.pelicula_id = pelicula_id;
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+
+        r.put("id_funcion", id_funcion);
+        r.put("fecha", fecha);
+        r.put("sala_cinema_id", sala_cinema_id);
+        r.put("sala_numero", sala_numero);
+        r.put("pelicula_id", pelicula_id);
+
+        return r;
     }
 
     /**
@@ -99,5 +113,5 @@ public class FuncionBD {
     public void setPelicula_id(String pelicula_id) {
         this.pelicula_id = pelicula_id;
     }
-    
+
 }
