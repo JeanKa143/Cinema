@@ -43,9 +43,9 @@ import org.json.JSONObject;
 public class ServicioFacturas {
 
     @GET
-    @Path("{getFactura}")
+    @Path("{seq_factura}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getFactura(@PathParam("id") int id) {
+    public String getFactura(@PathParam("seq_factura") int id) {
         FacturaBD c = FACTURAS.getFactura(id);
 
         if (c == null) {

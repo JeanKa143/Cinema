@@ -15,6 +15,7 @@
         <h1 id="titulo" name="titulo">Bienvenido, </h1>
         <nav>
             <ul>
+                <li><a href="historialCompras.jsp">Historial de compras</li></a>
                 <li><a onclick="cerrar()">Cerrar Sesión</li></a>
                 <!--<li><a onclick="butacas()">Seleccionar butacas</li></a>-->
             </ul>
@@ -28,7 +29,7 @@
                       <h2 id='titular' name='titular'></h2>
                       <div id="galeria" class="galeria"></div>
                   </section>
-            <!-- PORFA AYUDENME A HACER ESTO UN POP-UP -->
+            
             
                 <h2>Nombre de la pelicula:  </h2>
                 <h2 name="movieName" id="movieName"></h2>
