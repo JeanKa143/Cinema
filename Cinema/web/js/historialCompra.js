@@ -17,9 +17,10 @@ async function cargarFactura(formulario) {
       fetch(request).then(
               resultado => resultado.json()
       ).then(resultado => {
-            resultado.JSON;
-            let a = document.getElementById('factura');
-            a.innerHTML = resultado.date;
+          resultado.JSON;
+        let a = document.getElementById('factura');
+         a.innerHTML = "El id de la factura es" + resultado.seq_factura + "<br> La factura esta a nombre de: " + resultado.cliente_usuario_id +
+                "<br> La factura fue comprada el:  " + resultado.fecha ;
       }).catch(() => {
           alert("La compra que busca no se encuentra");
       });
