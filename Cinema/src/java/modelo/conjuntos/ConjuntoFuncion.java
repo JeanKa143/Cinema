@@ -36,16 +36,21 @@ public class ConjuntoFuncion implements Serializable {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
+
     //agrega a la base de datos
-     public void agregar(FuncionBD nuevaFuncion) throws SQLException, IOException {
-         funcion.add(nuevaFuncion.getId_funcion(), nuevaFuncion);
-     }
+    public void agregar(FuncionBD nuevaFuncion) throws SQLException, IOException {
+        funcion.add(nuevaFuncion.getId_funcion(), nuevaFuncion);
+    }
     
+    public int agregar2(FuncionBD nuevaFuncion) throws SQLException, IOException{
+        return funcion.add(nuevaFuncion);
+    }
+
     //saca de la base la sala con el ID solicitado
-    public Funcion obtener(int id) { 
+    public Funcion obtener(int id) {
         try {
             FuncionBD fun = funcion.retrieve(id);
-            Funcion aux = new Funcion(fun.getFecha(),fun.getPelicula_id());
+            Funcion aux = new Funcion(fun.getFecha(), fun.getPelicula_id());
             return aux;
 
         } catch (IOException | SQLException ex) {
@@ -53,25 +58,26 @@ public class ConjuntoFuncion implements Serializable {
             return null;
         }
     }
+
     //enlista las funciones de la BD
-     public List<Funcion> getListaFunciones() {
-         List<Funcion> listaFunciones = new ArrayList<>();
-         List<FuncionBD> listaFuncionesBD = new ArrayList<>();
+    public List<Funcion> getListaFunciones() {
+        List<Funcion> listaFunciones = new ArrayList<>();
+        List<FuncionBD> listaFuncionesBD = new ArrayList<>();
         try {
             listaFuncionesBD = funcion.listAll();
-            for(int i=0; i<listaFuncionesBD.size(); i++){
-                Funcion f = new Funcion (listaFuncionesBD.get(i).getFecha(),listaFuncionesBD.get(i).getPelicula_id());
+            for (int i = 0; i < listaFuncionesBD.size(); i++) {
+                Funcion f = new Funcion(listaFuncionesBD.get(i).getFecha(), listaFuncionesBD.get(i).getPelicula_id());
                 listaFunciones.add(f);
             }
-                
+
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
-              return listaFunciones;
+        return listaFunciones;
     }
-    
-     //borra una sala de la BD
-     public void borrarSala(int id){
+
+    //borra una sala de la BD
+    public void borrarSala(int id) {
         try {
             funcion.delete(id);
         } catch (SQLException ex) {
@@ -79,10 +85,10 @@ public class ConjuntoFuncion implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(ConjuntoSalas.class.getName()).log(Level.SEVERE, null, ex);
         }
-     }
-    
+    }
+
     //actualiza la funcion en la BD
-     public void actualizar(FuncionBD value){
+    public void actualizar(FuncionBD value) {
         try {
             funcion.update(value.getId_funcion(), value);
         } catch (SQLException ex) {
@@ -90,5 +96,5 @@ public class ConjuntoFuncion implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(ConjuntoFuncion.class.getName()).log(Level.SEVERE, null, ex);
         }
-     }
+    }
 }

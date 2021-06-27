@@ -11,11 +11,11 @@ package servicios;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -25,6 +25,7 @@ import javax.ws.rs.core.MediaType;
 import modelo.Sala;
 import modelo.bd.SalaBD;
 import modelo.conjuntos.ConjuntoSalas;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -33,12 +34,30 @@ import org.json.JSONObject;
  */
 @Path("/salas")
 public class ServicioSalas {
-     @GET
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getSalas() {
+        JSONArray r = new JSONArray();
+        List<Sala> listaSalas = SALAS.getListaSalas();
+
+        if (listaSalas.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        for (Sala s : listaSalas) {
+            r.put(toJSON(s));
+        }
+
+        return r.toString();
+    }
+
+    @GET
     @Path("{id_sala}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getSala(@PathParam("id_sala") String id) {
-        
-        Sala c = salas.obtener(Integer.parseInt(id));
+
+        Sala c = SALAS.obtener(Integer.parseInt(id));
 
         if (c == null) {
             throw new NotFoundException();
@@ -55,14 +74,14 @@ public class ServicioSalas {
         System.out.println(s.getNumero());
         System.out.println(s.getCinema_id());
         try {
-            salas.agregar(s);
+            SALAS.agregar(s);
         } catch (SQLException ex) {
             Logger.getLogger(ServicioSalas.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(ServicioSalas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public JSONObject toJSON(Sala x) {
         JSONObject r = new JSONObject();
 
@@ -71,6 +90,6 @@ public class ServicioSalas {
 
         return r;
     }
-    private static final ConjuntoSalas salas = new ConjuntoSalas();
-    
+    private static final ConjuntoSalas SALAS = new ConjuntoSalas();
+
 }

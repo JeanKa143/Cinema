@@ -67,7 +67,7 @@ function mostrarPelicula() {
                                     document.getElementById('pelicula').value = "";
 
                                     for (i = 0; i < infoPelicula.length; i++) {
-                                        console.log(infoPelicula[i].style.display = "block");
+                                        infoPelicula[i].style.display = "block";
                                     }
                                 }
                         );
@@ -78,7 +78,7 @@ function mostrarPelicula() {
                         document.getElementById('pelicula').value = "";
 
                         for (i = 0; i < infoPelicula.length; i++) {
-                            console.log(infoPelicula[i].style.display = "none");
+                            infoPelicula[i].style.display = "none";
                         }
                         window.alert('No se ha encontrado la pelicula.');
                     }

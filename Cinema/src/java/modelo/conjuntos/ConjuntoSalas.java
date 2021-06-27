@@ -36,16 +36,17 @@ public class ConjuntoSalas implements Serializable {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
+
     //agrega a la base de datos
-     public void agregar(SalaBD nuevaSala) throws SQLException, IOException {
-         salas.add(nuevaSala.getNumero(), nuevaSala);
-     }
-    
+    public void agregar(SalaBD nuevaSala) throws SQLException, IOException {
+        salas.add(nuevaSala.getNumero(), nuevaSala);
+    }
+
     //saca de la base la sala con el ID solicitado
-    public Sala obtener(int id) { 
+    public Sala obtener(int id) {
         try {
             SalaBD sala = salas.retrieve(id);
-            Sala aux = new Sala(sala.getNumero(),sala.getCapacidad());
+            Sala aux = new Sala(sala.getNumero(), sala.getCapacidad());
             return aux;
 
         } catch (IOException | SQLException ex) {
@@ -53,25 +54,26 @@ public class ConjuntoSalas implements Serializable {
             return null;
         }
     }
+
     //enlista las salas de la BD
-     public List<Sala> getListaSalas() {
-         List<Sala> listaSalas = new ArrayList<>();
-         List<SalaBD> listaSalasBD = new ArrayList<>();
+    public List<Sala> getListaSalas() {
+        List<Sala> listaSalas = new ArrayList<>();
+        List<SalaBD> listaSalasBD = new ArrayList<>();
         try {
             listaSalasBD = salas.listAll();
-            for(int i=0; i<listaSalasBD.size(); i++){
-                Sala s = new Sala (listaSalasBD.get(i).getNumero(),listaSalasBD.get(i).getCapacidad());
+            for (int i = 0; i < listaSalasBD.size(); i++) {
+                Sala s = new Sala(listaSalasBD.get(i).getNumero(), listaSalasBD.get(i).getCapacidad());
                 listaSalas.add(s);
             }
-                
+
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
-              return listaSalas;
+        return listaSalas;
     }
-    
-     //borra una sala de la BD
-     public void borrarSala(int id){
+
+    //borra una sala de la BD
+    public void borrarSala(int id) {
         try {
             salas.delete(id);
         } catch (SQLException ex) {
@@ -79,10 +81,10 @@ public class ConjuntoSalas implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(ConjuntoSalas.class.getName()).log(Level.SEVERE, null, ex);
         }
-     }
-    
-     //actualiza la sala en la BD
-     public void actualizar(SalaBD value){
+    }
+
+    //actualiza la sala en la BD
+    public void actualizar(SalaBD value) {
         try {
             salas.update(value.getCinema_id(), value);
         } catch (SQLException ex) {
@@ -90,5 +92,5 @@ public class ConjuntoSalas implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(ConjuntoSalas.class.getName()).log(Level.SEVERE, null, ex);
         }
-     }
+    }
 }

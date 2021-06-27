@@ -49,8 +49,8 @@ public class FuncionBD_CRUD extends AbstractCRUD{
 
     protected static final String ADD_CMD
             = "INSERT INTO bd_cinema.funcion "
-            + "(id_funcion, fecha, sala_cinema_id, sala_numero, pelicula_id) "
-            + "VALUES (?, ?, ?, ?, ?); ";
+            + "(fecha, sala_cinema_id, sala_numero, pelicula_id) "
+            + "VALUES (?, ?, ?, ?); ";
 
     protected static final String RETRIEVE_CMD
             = "SELECT "

@@ -1,26 +1,10 @@
 package newpackage;
 
-import java.io.IOException;
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.List;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.Funcion;
-import modelo.Pelicula;
-import modelo.Sala;
-import modelo.Tiquete;
-import modelo.Usuario;
-import modelo.bd.AsientoSalaFuncionBD;
 import modelo.bd.FuncionBD;
-import modelo.conjuntos.ConjuntoFuncion;
-import modelo.conjuntos.ConjuntoPelicula;
-import modelo.conjuntos.ConjuntoSalas;
-import modelo.conjuntos.ConjuntoTiquetes;
-import modelo.conjuntos.ConjuntoUsuarios;
-import org.json.JSONObject;
-import servicios.ServicioLogin;
-import servicios.ServicioSalas;
+import modelo.dao.FuncionBD_DAO;
 
 /*
  * Integrantes del equipo:
@@ -38,7 +22,12 @@ import servicios.ServicioSalas;
 public class main {
 
     public static void main(String args[]) {
-
-     
+        try {
+            FuncionBD f = new FuncionBD(0, new Date(), 1, 20, "337404");
+            FuncionBD_DAO fDB = new FuncionBD_DAO();
+            fDB.add(f);
+        } catch (Exception ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+        }
     }
 }
