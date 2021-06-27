@@ -17,9 +17,9 @@
  * Curso: EIF209 ProgramacionIV
  * I Ciclo 2021
  */
+/* global fetch */
+
 var session = window.sessionStorage;
-var url = "http://localhost:8085/Cinema";
-var posterUrl = "https://www.themoviedb.org/t/p/w1280";
 
 function cerrar(){
     session.removeItem('id');
@@ -28,6 +28,9 @@ function cerrar(){
 }
 
 function getNombreCliente(){
-   document.getElementById("titulo").innerHTML = "Bienvenido, " + session.getItem('id');
-   cargarCartelera();
+   document.getElementById("titulo").innerHTML += "Bienvenido, " + session.getItem('id');
+   if(document.getElementById('galeria')){
+          cargarCartelera();
+   }
 }
+window.onload = getNombreCliente;

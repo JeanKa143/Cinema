@@ -10,30 +10,48 @@
 package modelo.bd;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.text.ParseException;
 import modelo.Factura;
+import org.json.JSONObject;
 
 public class FacturaBD implements Serializable {
 
-    public FacturaBD(int seq_factura, Date fecha, String tarjeta_pago, String cliente_id, String cliente_usuario_id) {
+    public FacturaBD(int seq_factura, String fecha, String tarjeta_pago, String cliente_id, String cliente_usuario_id) {
         this.seq_factura = seq_factura;
         this.fecha = fecha;
         this.tarjeta_pago = tarjeta_pago;
         this.cliente_id = cliente_id;
         this.cliente_usuario_id = cliente_usuario_id;
     }
+    
+    public FacturaBD(JSONObject j) throws ParseException {
 
-    public FacturaBD(Factura factura) {
-//        this(
-//                factura.getId_factura(),
-//                factura.getFecha(),
-//                factura.getCliente().getTarjetaPago(),
-//                factura.getCliente().getId(),
-//                factura.getCliente().getIdUsuario()
-//        );
-        throw new UnsupportedOperationException();
+    this(Integer.parseInt(j.getString("seq_factura")), j.getString("fecha"), j.getString("tarjeta_pago"), j.getString("cliente_id"), j.getString("cliente_usuario_id"));
+    }
+    
+ public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+
+        r.put("seq_factura", seq_factura);
+        r.put("fecha", tarjeta_pago);
+        r.put("tarjeta_pago", tarjeta_pago);
+        r.put("cliente_id", cliente_id);
+        r.put("cliente_usuario_id", cliente_usuario_id);
+
+        return r;
     }
 
+    public FacturaBD(Factura factura) {
+        this(
+                factura.getId_factura(),
+                factura.getFecha(),
+                factura.getCliente().getTarjeta_pago(),
+                factura.getCliente().getId(),
+                factura.getCliente().getIdCliente()
+       );
+        throw new UnsupportedOperationException();
+    }
+      
     public int getSeq_factura() {
         return seq_factura;
     }
@@ -42,11 +60,11 @@ public class FacturaBD implements Serializable {
         this.seq_factura = seq_factura;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -73,9 +91,9 @@ public class FacturaBD implements Serializable {
     public void setCliente_usuario_id(String cliente_usuario_id) {
         this.cliente_usuario_id = cliente_usuario_id;
     }
-
+    
     private int seq_factura;
-    private Date fecha;
+    private String fecha;
     private String tarjeta_pago;
     private String cliente_id;
     private String cliente_usuario_id;

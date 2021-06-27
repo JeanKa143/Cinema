@@ -23,24 +23,26 @@
             <h2>
                 Cartelera del día
             </h2>
+            <form id="formulario" action="#" onsubmit="return agregarFactura('formulario');">
+                 <section>
+                      <h2 id='titular' name='titular'></h2>
+                      <div id="galeria" class="galeria"></div>
+                  </section>
+            <!-- PORFA AYUDENME A HACER ESTO UN POP-UP -->
             
-            <section>
-                    <h2 id='titular' name='titular'></h2>
-                    <div id="galeria" class="galeria"></div>
-            </section>
-            <--!<!-- PORFA AYUDENME A HACER ESTO UN POP-UP -->
-            <h2>Nombre de la pelicula:  </h2>
-            <h2 name="movieName" id="movieName"></h2>
-            <h1>Escoja los asientos que desea ocupar durante la función</h1>
-            <div id="gallery" class="gallery"> </div>
-            <p>Cantidad de butacas seleccionadas: </p>
-            <h2 id="butacas" name="butacas"></h2>
+                <h2>Nombre de la pelicula:  </h2>
+                <h2 name="movieName" id="movieName"></h2>
+                <h1>Escoja los asientos que desea ocupar durante la función</h1>
+                <p>Cantidad de butacas seleccionadas: <h2 id="butacas" name="butacas"></h2></p>
+                <button name="comprar" id="comprar" type="submit">Proceder con la compra</button>
+                <div id="gallery" class="gallery"> </div>
+            </form>
        </div>
         </div>
         
+        <script src="../js/factura.js" type="text/javascript"></script>
         <script src="../js/scriptSalas.js" type="text/javascript"></script>
-        <script src="../js/cartelera.js" type="text/javascript"></script>
-        <script src="../js/busqueda.js" type="text/javascript"></script>
         <script src="../js/cliente.js" type="text/javascript"></script>
+        
     </body>
 </html>

@@ -90,6 +90,7 @@ button{
     color:black;
     font-size: 14px;
     padding: 10px 25px;
+    align: center;
 }
 
 #pop-up-img {

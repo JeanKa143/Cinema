@@ -22,26 +22,19 @@ header {
     height: 100px;
 }
 
-.buscar{
-    position : absolute;
-    padding: 5px;
+p, h2 {
+    text-align: center;
+    size: 20px;
 }
-.buscar input{
-    border-radius: 30px;
-    font-size: 20px;
-    height: 40px;
-    margin-top: 10px;
-    margin-right: 10px;
-    padding: 0px 20px;
-    width: 240px;
-}
-.btn-busca{
-    font-size: 20px;
-    height: 40px;
-    margin-top: 10px;
-    margin-right: 30px;
-    padding: 0px 20px;
-    width: 100px;
+
+#comprar {
+    background-color : #47a386;
+    border:0;
+    border-radius: 5px;
+    color:black;
+    font-size: 14px;
+    padding: 10px 25px;
+    align: center;
 }
 
 ul{
@@ -95,9 +88,10 @@ button{
 .gallery {
     display: grid;
     grid-template-columns: repeat(9, 0fr);
-    grid-gap: 1px;
     margin-left: 400px;
-    margin-top: 200px;
+    margin-top: 50px;
+     height: 1px;
+    width: 1px;
 }
 
 .show{

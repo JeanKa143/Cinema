@@ -11,9 +11,7 @@ package modelo.conjuntos;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import modelo.Factura;
 import modelo.bd.FacturaBD;
 import modelo.dao.FacturaBD_DAO;
 
@@ -27,63 +25,55 @@ public class ConjuntoFactura {
         }
     }
 
-    public void agragarFactura(Factura factura) {
+    public void agregarFactura(FacturaBD factura) {
         try {
-            facturas.add(0, new FacturaBD(factura));
+            facturas.add(factura.getSeq_factura(), factura);
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
     }
 
-    //Falta completar
-    public Factura getFactura(int facturaId) {
-        Factura factura = null;
-
+    public FacturaBD getFactura(int facturaId) {
         try {
             FacturaBD facturaBD = facturas.retrieve(facturaId);
 
             if (facturaBD != null) {
-                factura = new Factura(facturaBD.getSeq_factura(), facturaBD.getFecha(), /*obtener cliente de ConjuntoCliente*/ null);
+                return facturaBD;
             }
         } catch (IOException | IllegalArgumentException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        return factura;
+        return null;
     }
 
-    //Falta completar
-    public List<Factura> getListaFacturas() {
-        List<Factura> listaFacturas = new ArrayList<>();
+    public List<FacturaBD> getListaFacturas() {
 
         try {
             List<FacturaBD> facturasBD = facturas.listAll();
-
-            for (FacturaBD f : facturasBD) {
-                listaFacturas.add(new Factura(f.getSeq_factura(), f.getFecha(), /*obtener cliente de ConjuntoCliente*/ null));
+            if(facturasBD != null){
+                return facturasBD;
             }
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        return listaFacturas;
+        return null;
     }
 
-    //Falta completar
-    public List<Factura> getListaFacturasCliente(String clienteId) {
-        List<Factura> listaFacturas = new ArrayList<>();
+   
+    public List<FacturaBD> getListaFacturasCliente(String clienteId) {
 
         try {
             List<FacturaBD> facturasBD = facturas.listAllByCliente(clienteId);
-
-            for (FacturaBD f : facturasBD) {
-                listaFacturas.add(new Factura(f.getSeq_factura(), f.getFecha(), /*obtener cliente de ConjuntoCliente*/ null));
+            if(facturasBD != null){
+                return facturasBD;
             }
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
 
-        return listaFacturas;
+        return null;
     }
 
     private FacturaBD_DAO facturas;

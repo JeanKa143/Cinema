@@ -14,14 +14,15 @@ import java.util.Date;
 
 public class Factura implements Serializable {
 
-    public Factura(int id_factura, Date fecha, Cliente cliente) {
+    public Factura(int id_factura, String fecha, String tarjeta_pago, Cliente cliente) {
         this.id_factura = id_factura;
         this.fecha = fecha;
         this.cliente = cliente;
+        this.tarjeta_pago = tarjeta_pago;
     }
 
     public Factura() {
-        this(0, null, null);
+        this(0, null, null, null);
     }
 
     public int getId_factura() {
@@ -32,11 +33,11 @@ public class Factura implements Serializable {
         this.id_factura = id_factura;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -49,6 +50,15 @@ public class Factura implements Serializable {
     }
 
     private int id_factura;
-    private Date fecha;
+    private String fecha;
     private Cliente cliente;
+    private String tarjeta_pago;
+
+    public String getTarjeta_pago() {
+        return tarjeta_pago;
+    }
+
+    public void setTarjeta_pago(String tarjeta_pago) {
+        this.tarjeta_pago = tarjeta_pago;
+    }
 }
