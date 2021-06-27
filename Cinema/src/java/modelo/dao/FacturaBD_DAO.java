@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -44,37 +45,49 @@ public class FacturaBD_DAO extends AbstractDAO<Integer, FacturaBD> {
 
     @Override
     public void setAddParameters(PreparedStatement stm, Integer id, FacturaBD value) throws SQLException {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-        Date fecha;
-        try {
-            fecha = formato.parse(value.getFecha());
-            stm.setDate(1, (java.sql.Date) fecha);
-            stm.setString(2, value.getTarjeta_pago());
-            stm.setString(3, value.getCliente_usuario_id());
-            stm.setString(4, value.getCliente_id());
-        } catch (ParseException ex) {
-            Logger.getLogger(FacturaBD_DAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error con la fecha");
-        }
+ 
+        SimpleDateFormat sdf = new SimpleDateFormat(
+            "MM-dd-yyyy");
+        int year = 2014;
+        int month = 10;
+        int day = 31;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month - 1); // <-- months start
+                                            // at 0.
+        cal.set(Calendar.DAY_OF_MONTH, day);
+
+        java.sql.Date date = new java.sql.Date(cal.getTimeInMillis());
+
+        stm.setDate(1, date);
+        stm.setString(2, value.getTarjeta_pago());
+        stm.setString(3, value.getCliente_usuario_id());
+        stm.setString(4, value.getCliente_id());
         
     }
 
     @Override
     public void setUpdateParameters(PreparedStatement stm, Integer id, FacturaBD value) throws SQLException {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
-        Date fecha;
-        try {
-            fecha = formato.parse(value.getFecha());
-            stm.setDate(1, (java.sql.Date) fecha);
-            stm.setString(2, value.getTarjeta_pago());
-            stm.setString(3, value.getCliente_usuario_id());
-            stm.setString(4, value.getCliente_id());
-            stm.setInt(5, value.getSeq_factura());
-    }   catch (ParseException ex) {
-            Logger.getLogger(FacturaBD_DAO.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("error con la fecha");
-        }
+        SimpleDateFormat sdf = new SimpleDateFormat(
+            "MM-dd-yyyy");
+        int year = 2014;
+        int month = 10;
+        int day = 31;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month - 1); // <-- months start
+                                            // at 0.
+        cal.set(Calendar.DAY_OF_MONTH, day);
+
+        java.sql.Date date = new java.sql.Date(cal.getTimeInMillis());
+       
+        stm.setDate(1, date);
+        stm.setString(2, value.getTarjeta_pago());
+        stm.setString(3, value.getCliente_usuario_id());
+        stm.setString(4, value.getCliente_id());
+        stm.setInt(5, value.getSeq_factura());
     }
+
 
     public List<FacturaBD> listAllByCliente(String cliente_id) throws SQLException, IOException {
         List<FacturaBD> r = new ArrayList<>();
