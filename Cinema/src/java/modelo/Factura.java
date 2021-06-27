@@ -13,8 +13,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Factura implements Serializable {
-
-    public Factura(int id_factura, String fecha, String tarjeta_pago, Cliente cliente) {
+//3, "12-05-2021", cl.getTarjeta_pago(), cl.getId(), cl.getIdCliente()
+    public Factura(int id_factura, Date fecha, String tarjeta_pago, Cliente cliente) {
         this.id_factura = id_factura;
         this.fecha = fecha;
         this.cliente = cliente;
@@ -33,11 +33,11 @@ public class Factura implements Serializable {
         this.id_factura = id_factura;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -50,7 +50,7 @@ public class Factura implements Serializable {
     }
 
     private int id_factura;
-    private String fecha;
+    private Date fecha;
     private Cliente cliente;
     private String tarjeta_pago;
 

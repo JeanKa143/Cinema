@@ -15,14 +15,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelo.bd.FacturaBD;
 import modelo.dao.crud.FacturaBD_CRUD;
 
@@ -36,7 +30,7 @@ public class FacturaBD_DAO extends AbstractDAO<Integer, FacturaBD> {
     public FacturaBD getRecord(ResultSet rs) throws SQLException {
         return new FacturaBD(
                 rs.getInt("seq_factura"),
-                rs.getString("fecha"),
+                rs.getDate("fecha"),
                 rs.getString("tarjeta_pago"),
                 rs.getString("cliente_id_cliente"),
                 rs.getString("cliente_usuario_id_usuario")
@@ -45,21 +39,8 @@ public class FacturaBD_DAO extends AbstractDAO<Integer, FacturaBD> {
 
     @Override
     public void setAddParameters(PreparedStatement stm, Integer id, FacturaBD value) throws SQLException {
- 
-        SimpleDateFormat sdf = new SimpleDateFormat(
-            "MM-dd-yyyy");
-        int year = 2014;
-        int month = 10;
-        int day = 31;
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month - 1); // <-- months start
-                                            // at 0.
-        cal.set(Calendar.DAY_OF_MONTH, day);
-
-        java.sql.Date date = new java.sql.Date(cal.getTimeInMillis());
-
-        stm.setDate(1, date);
+        //stm.setInt(1, id);
+        stm.setTimestamp(1, new java.sql.Timestamp(value.getFecha().getTime()));
         stm.setString(2, value.getTarjeta_pago());
         stm.setString(3, value.getCliente_usuario_id());
         stm.setString(4, value.getCliente_id());
@@ -68,20 +49,8 @@ public class FacturaBD_DAO extends AbstractDAO<Integer, FacturaBD> {
 
     @Override
     public void setUpdateParameters(PreparedStatement stm, Integer id, FacturaBD value) throws SQLException {
-        SimpleDateFormat sdf = new SimpleDateFormat(
-            "MM-dd-yyyy");
-        int year = 2014;
-        int month = 10;
-        int day = 31;
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, month - 1); // <-- months start
-                                            // at 0.
-        cal.set(Calendar.DAY_OF_MONTH, day);
-
-        java.sql.Date date = new java.sql.Date(cal.getTimeInMillis());
-       
-        stm.setDate(1, date);
+           
+        stm.setTimestamp(1, new java.sql.Timestamp(value.getFecha().getTime()));
         stm.setString(2, value.getTarjeta_pago());
         stm.setString(3, value.getCliente_usuario_id());
         stm.setString(4, value.getCliente_id());
@@ -105,4 +74,5 @@ public class FacturaBD_DAO extends AbstractDAO<Integer, FacturaBD> {
         }
         return r;
     }
+    
 }

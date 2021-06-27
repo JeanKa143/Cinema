@@ -10,13 +10,13 @@
 package modelo.bd;
 
 import java.io.Serializable;
-import java.text.ParseException;
+import java.util.Date;
 import modelo.Factura;
 import org.json.JSONObject;
 
 public class FacturaBD implements Serializable {
 
-    public FacturaBD(int seq_factura, String fecha, String tarjeta_pago, String cliente_id, String cliente_usuario_id) {
+    public FacturaBD(int seq_factura, Date fecha, String tarjeta_pago, String cliente_id, String cliente_usuario_id) {
         this.seq_factura = seq_factura;
         this.fecha = fecha;
         this.tarjeta_pago = tarjeta_pago;
@@ -24,16 +24,16 @@ public class FacturaBD implements Serializable {
         this.cliente_usuario_id = cliente_usuario_id;
     }
     
-    public FacturaBD(JSONObject j) throws ParseException {
-
-    this(Integer.parseInt(j.getString("seq_factura")), j.getString("fecha"), j.getString("tarjeta_pago"), j.getString("cliente_id"), j.getString("cliente_usuario_id"));
+     public FacturaBD(JSONObject j) {
+        this(j.getInt("seq_factura"), null, j.getString("tarjeta_pago"), j.getString("cliente_id"),
+                j.getString("cliente_usuario_id"));
     }
     
- public JSONObject toJSON() {
+    public JSONObject toJSON() {
         JSONObject r = new JSONObject();
 
         r.put("seq_factura", seq_factura);
-        r.put("fecha", tarjeta_pago);
+        r.put("fecha", fecha);
         r.put("tarjeta_pago", tarjeta_pago);
         r.put("cliente_id", cliente_id);
         r.put("cliente_usuario_id", cliente_usuario_id);
@@ -60,11 +60,11 @@ public class FacturaBD implements Serializable {
         this.seq_factura = seq_factura;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -93,7 +93,7 @@ public class FacturaBD implements Serializable {
     }
     
     private int seq_factura;
-    private String fecha;
+    private Date fecha;
     private String tarjeta_pago;
     private String cliente_id;
     private String cliente_usuario_id;

@@ -24,6 +24,7 @@ package servicios;
  */
 
 import java.text.ParseException;
+import java.util.Date;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -57,9 +58,10 @@ public class ServicioFacturas {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("agregarFactura") 
-    public void addFactura(@PathParam("idCliente") String factura) throws ParseException {
-       
+    public void addFactura(String factura) {
+        Date date = new Date();
         FacturaBD c = new FacturaBD(new JSONObject(factura));
+        c.setFecha(date);
         Cliente cliente = CLIENTES.getCliente(c.getCliente_id());
         c.setTarjeta_pago(cliente.getTarjeta_pago());  
         FACTURAS.agregarFactura(c);
@@ -68,5 +70,6 @@ public class ServicioFacturas {
 
     private static final ConjuntoFactura FACTURAS = new ConjuntoFactura();
     private static final ConjuntoClientes CLIENTES = new ConjuntoClientes();
+
 }
 
