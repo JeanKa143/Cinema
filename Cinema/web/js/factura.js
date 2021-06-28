@@ -7,25 +7,23 @@
  * Curso: EIF209 ProgramacionIV
  * I Ciclo 2021
  */
-
+ let seq = 0;
 function agregarFactura(idFormulario) {
     var f = document.getElementById(idFormulario);
-    let date = new Date();
     let idCliente = session.getItem('id');
-    console.log(idCliente);
-
-    let request = new Request(`../api/facturas/${idCliente}`,
+    let date = new Date();
+    let request = new Request('../api/facturas',
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    seq_factura: 2,
-                    fecha: date,
-                    tarjeta_pago: "null",
-                    cliente_id: idCliente,
-                    cliente_usuario_id: idCliente
+                    seq_factura: String.valueOf(seq),
+                    fecha: String.valueOf(date),
+                    tarjeta_pago: String.valueOf(idCliente),
+                    cliente_id:  String.valueOf(idCliente),
+                    cliente_usuario_id:  String.valueOf(idCliente)
                     
                 })
             });
@@ -33,6 +31,7 @@ function agregarFactura(idFormulario) {
     fetch(request)
             .then(resultado => {
                 if (resultado.ok) {
+                    seq++;
                     window.alert('Funcion creada con exito.');
             
                 } else {

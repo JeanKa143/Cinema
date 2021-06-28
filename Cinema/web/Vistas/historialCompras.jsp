@@ -12,8 +12,14 @@
         <title>Registro</title>
         <link href="../CSS/registroClientes.css" rel="stylesheet" type="text/css"/>
         <script src="../js/historialCompra.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     </head>
     <body>
+         <nav>
+            <ul>
+                <li><a onclick="generaPDF()" style="text-decoration: none">Generar pdf de la compra</li></a>   
+            </ul>
+        </nav>
         <div id="wrapper">
             <form id="compra" action="#" onsubmit="return cargarFactura('compra');">
                 <h1>Busqueda de compras</h1>
@@ -31,11 +37,12 @@
                             
                         </tr>
                         <tr>
-                            <td colspan="2" ><a href="index.jsp">Regresar</a></td>
+                            <td colspan="2" ><a href="moduloCliente.jsp" style="text-decoration: none">Regresar</a></td>
                         </tr>
                     </tfoot>
                 </table>
                 <h1 name="factura" id="factura"></h1>
+              
             </form>
         </div>
     </body>

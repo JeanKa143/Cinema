@@ -12,10 +12,10 @@
         <title>Modulo cliente</title>
     </head>
     <body>
-        <h1 id="titulo" name="titulo">Bienvenido, </h1>
+        <h1 id="titulo" name="titulo"></h1>
         <nav>
             <ul>
-                <li><a href="historialCompras.jsp">Historial de compras</li></a>
+                <li><a href="historialCompras.jsp" style="text-decoration: none">Historial de compras</li></a>   
                 <li><a onclick="cerrar()">Cerrar Sesión</li></a>
                 <!--<li><a onclick="butacas()">Seleccionar butacas</li></a>-->
             </ul>
