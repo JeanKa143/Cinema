@@ -55,7 +55,7 @@ public class ClienteBD_CRUD  extends AbstractCRUD {
     protected static final String RETRIEVE_CMD
             = "SELECT "
             + "usuario_id_usuario, id_cliente, apellidos, nombre, telefono, tarjeta_pago "
-            + "FROM bd_cinema.cliente WHERE id_cliente = ?; ";
+            + "FROM bd_cinema.cliente WHERE usuario_id_usuario = ?; ";
 
     protected static final String UPDATE_CMD
             = "UPDATE bd_cinema.cliente "

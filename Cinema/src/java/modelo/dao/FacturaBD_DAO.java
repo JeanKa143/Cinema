@@ -39,11 +39,11 @@ public class FacturaBD_DAO extends AbstractDAO<Integer, FacturaBD> {
 
     @Override
     public void setAddParameters(PreparedStatement stm, Integer id, FacturaBD value) throws SQLException {
-        //stm.setInt(1, id);
-        stm.setTimestamp(1, new java.sql.Timestamp(value.getFecha().getTime()));
-        stm.setString(2, value.getTarjeta_pago());
-        stm.setString(3, value.getCliente_usuario_id());
+        stm.setInt(1, id);
+        stm.setTimestamp(2, new java.sql.Timestamp(value.getFecha().getTime()));
+        stm.setString(3, value.getTarjeta_pago());
         stm.setString(4, value.getCliente_id());
+        stm.setString(5, value.getCliente_usuario_id());
         
     }
 

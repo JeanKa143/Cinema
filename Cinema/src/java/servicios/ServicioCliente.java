@@ -23,9 +23,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import modelo.Cliente;
 import modelo.Usuario;
-import modelo.bd.FacturaBD;
 import modelo.conjuntos.ConjuntoClientes;
-import modelo.conjuntos.ConjuntoFactura;
 import modelo.conjuntos.ConjuntoUsuarios;
 import org.json.JSONObject;
 
@@ -61,6 +59,4 @@ public class ServicioCliente {
  
     private static final ConjuntoClientes CLIENTES = new ConjuntoClientes();
     private static final ConjuntoUsuarios USUARIOS = new ConjuntoUsuarios();
-    private static final ConjuntoFactura FACTURAS = new ConjuntoFactura();
-    private int factura = 2;
 }

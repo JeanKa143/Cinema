@@ -28,6 +28,10 @@ public class FacturaBD implements Serializable {
         this(j.getInt("seq_factura"), null, j.getString("tarjeta_pago"), j.getString("cliente_id"),
                 j.getString("cliente_usuario_id"));
     }
+
+    public FacturaBD() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public JSONObject toJSON() {
         JSONObject r = new JSONObject();

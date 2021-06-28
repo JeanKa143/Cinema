@@ -49,8 +49,8 @@ public class FacturaBD_CRUD extends AbstractCRUD {
 
     protected static final String ADD_CMD
             = "INSERT INTO bd_cinema.factura "
-            + "(fecha, tarjeta_pago, cliente_usuario_id_usuario, cliente_id_cliente) "
-            + "VALUES (?, ?, ?, ?); ";
+            + "(seq_factura, fecha, tarjeta_pago, cliente_usuario_id_usuario, cliente_id_cliente) "
+            + "VALUES (?, ?, ?, ?, ?); ";
 
     protected static final String RETRIEVE_CMD
             = "SELECT "

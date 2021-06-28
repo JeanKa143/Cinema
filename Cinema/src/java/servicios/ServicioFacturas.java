@@ -24,6 +24,7 @@ package servicios;
  */
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -57,14 +58,15 @@ public class ServicioFacturas {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("agregarFactura") 
-    public void addFactura(String factura) {
-        Date date = new Date();
-        FacturaBD c = new FacturaBD(new JSONObject(factura));
-        c.setFecha(date);
-        Cliente cliente = CLIENTES.getCliente(c.getCliente_id());
-        c.setTarjeta_pago(cliente.getTarjeta_pago());  
-        FACTURAS.agregarFactura(c);
+    public void addFactura(String funcion) {
+        JSONObject datos = new JSONObject(funcion);
+        
+        Date fecha = new Date();
+        Cliente cliente = CLIENTES.getCliente(datos.getString("cliente_id"));
+        FacturaBD factura = new FacturaBD(Integer.parseInt(datos.getString("seq_factura")), fecha, cliente.getTarjeta_pago(),
+        cliente.getId(), cliente.getIdCliente());
+        FACTURAS.agregarFactura(factura);
+
     }
     
 
