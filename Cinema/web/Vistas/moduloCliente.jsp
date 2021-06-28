@@ -15,9 +15,9 @@
         <h1 id="titulo" name="titulo"></h1>
         <nav>
             <ul>
-                <li><a href="historialCompras.jsp" style="text-decoration: none">Historial de compras</li></a>   
+                <!--<li><a href="buscarFactura.jsp" style="text-decoration: none">Visualizar el historial de compras</li></a>--> 
+                <li><a href="historialCompras.jsp" style="text-decoration: none">Buscar una factura</li></a> 
                 <li><a onclick="cerrar()">Cerrar Sesión</li></a>
-                <!--<li><a onclick="butacas()">Seleccionar butacas</li></a>-->
             </ul>
         </nav>
         <div id="contents">

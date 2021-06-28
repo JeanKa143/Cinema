@@ -56,12 +56,6 @@ public class ServicioListaCompras {
         
         Date fecha = new Date();
         Cliente cliente = CLIENTES.getCliente(datos.getString("cliente_id"));
-
-        System.out.println(datos.getInt("seq_factura"));
-        System.out.println(fecha);
-        System.out.println( cliente.getTarjeta_pago());
-        System.out.println(cliente.getId());
-        System.out.println(cliente.getIdCliente());
             
         FacturaBD factura = new FacturaBD(datos.getInt("seq_factura"), fecha, cliente.getTarjeta_pago(),
         cliente.getId(), cliente.getIdCliente());

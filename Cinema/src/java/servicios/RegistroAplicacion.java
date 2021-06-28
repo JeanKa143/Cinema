@@ -32,7 +32,6 @@ public class RegistroAplicacion extends Application {
         classes.add(ServicioSalas.class);
         classes.add(ServicioPeliculas.class);
         classes.add(ServicioFunciones.class);
-        classes.add(ServicioFacturas.class);
         classes.add(ServicioListaCompras.class);
         return classes;
     }

@@ -36,10 +36,13 @@ function agregarFactura(idFormulario) {
             .then(resultado => {
                 if (!resultado.ok) {
                     if (resultado.status === 500) {
-                        window.alert('Ha ocurriodo un error al procesar la información.');
+                        window.alert('Ha ocurriodo un error al procesar la informacion.');
                     }
                 } else {
-                    window.location = "compraEntradas.jsp";
-                }
+                    window.alert('Su compra se ha realizado de manera exitosa, la pagina se reiniciara en 3 segundos');
+                    setTimeout(function(){location.reload();},3000);
+               }
             });
 }
+
+
