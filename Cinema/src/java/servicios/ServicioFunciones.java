@@ -56,7 +56,7 @@ public class ServicioFunciones {
     @Consumes(MediaType.APPLICATION_JSON)
     public void addFuncion(String funcion) {
         JSONObject datos = new JSONObject(funcion);
-        String alfabeto = "abcdefghijklmnopqrstuvwxyz";
+        String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int index = 0, aux = 1;
         int idFuncion;
 
