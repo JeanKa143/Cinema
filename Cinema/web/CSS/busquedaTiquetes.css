@@ -1,0 +1,34 @@
+/*
+Integrantes del equipo:
+- Luis Fallas Carvajal                   Cedula: 305180995
+- Diana Fallas Mendez                Cedula: 117770654
+- Jean Carlo Jimenez Oviedo     Cedula: 402500956
+
+Curso: EIF209 ProgramacionIV
+I Ciclo 2021
+*/
+/* 
+    Created on : 27 jun. 2021, 21:51:45
+    Author     : JeanKa
+*/
+
+@import "actualizarCartelera.css";
+
+/*Quitar botones de incremento (Chrome, Safari, Edge, Opera )*/
+.inputNoSpin::-webkit-outer-spin-button,
+.inputNoSpin::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+/*Quitar botones de incremento (Firefox)*/
+.inputNoSpin[type=number] {
+    -moz-appearance: textfield;
+}
+
+#infoTiquete{
+    text-align: center;
+}
+
+#infoTiquete h1{
+    color: #00cc00;
+}

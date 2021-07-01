@@ -9,13 +9,16 @@
  */
 package modelo.bd;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.json.JSONObject;
 
 /**
  *
  * @author Luis Fallas
  */
 public class TiqueteBD {
+
     private int id_tiquete;
     private double monto;
     private char asiento_funcion_fila;
@@ -34,6 +37,22 @@ public class TiqueteBD {
         this.asiento_funcion_funcion_fecha = asiento_funcion_funcion_fecha;
         this.asiento_funcion_funcion_sala_cinema_id = asiento_funcion_funcion_sala_cinema_id;
         this.asiento_funcion_funcion_sala_numero = asiento_funcion_funcion_sala_numero;
+    }
+
+    public JSONObject toJSON() {
+        JSONObject r = new JSONObject();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+        r.put("id_tiquete", id_tiquete);
+        r.put("monto", monto);
+        r.put("asiento_funcion_fila", Character.toString(asiento_funcion_fila));
+        r.put("asiento_funcion_posicion", asiento_funcion_posicion);
+        r.put("asiento_funcion_funcion_id", asiento_funcion_funcion_id);
+        r.put("asiento_funcion_funcion_fecha", format.format(asiento_funcion_funcion_fecha));
+        r.put("asiento_funcion_funcion_sala_cinema_id", asiento_funcion_funcion_sala_cinema_id);
+        r.put("asiento_funcion_funcion_sala_numero", asiento_funcion_funcion_sala_numero);
+
+        return r;
     }
 
     /**
@@ -128,25 +147,27 @@ public class TiqueteBD {
     }
 
     /**
-     * @param asiento_funcion_funcion_fecha the asiento_funcion_funcion_fecha to set
+     * @param asiento_funcion_funcion_fecha the asiento_funcion_funcion_fecha to
+     * set
      */
     public void setAsiento_funcion_funcion_fecha(Date asiento_funcion_funcion_fecha) {
         this.asiento_funcion_funcion_fecha = asiento_funcion_funcion_fecha;
     }
 
     /**
-     * @param asiento_funcion_funcion_sala_cinema_id the asiento_funcion_funcion_sala_cinema_id to set
+     * @param asiento_funcion_funcion_sala_cinema_id the
+     * asiento_funcion_funcion_sala_cinema_id to set
      */
     public void setAsiento_funcion_funcion_sala_cinema_id(int asiento_funcion_funcion_sala_cinema_id) {
         this.asiento_funcion_funcion_sala_cinema_id = asiento_funcion_funcion_sala_cinema_id;
     }
 
     /**
-     * @param asiento_funcion_funcion_sala_numero the asiento_funcion_funcion_sala_numero to set
+     * @param asiento_funcion_funcion_sala_numero the
+     * asiento_funcion_funcion_sala_numero to set
      */
     public void setAsiento_funcion_funcion_sala_numero(int asiento_funcion_funcion_sala_numero) {
         this.asiento_funcion_funcion_sala_numero = asiento_funcion_funcion_sala_numero;
     }
-    
-    
+
 }

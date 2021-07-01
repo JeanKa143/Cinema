@@ -13,6 +13,7 @@ import db.dao.AbstractDAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import modelo.bd.TiqueteBD;
 import modelo.dao.crud.TiqueteBD_CRUD;
@@ -32,15 +33,14 @@ public class TiqueteBD_DAO extends AbstractDAO<Integer, TiqueteBD> {
     public TiqueteBD getRecord(ResultSet rs) throws SQLException {
 
         return new TiqueteBD(
-        rs.getInt("id_tiquete"),
-        rs.getDouble("monto"),
-        rs.getString("asiento_funcion_fila").charAt(0),
-        rs.getInt("asiento_funcion_posicion"),
-        rs.getInt("asiento_funcion_funcion_id"),
-        rs.getDate("asiento_funcion_funcion_fecha"),
-        rs.getInt("asiento_funcion_funcion_sala_cinema_id"),
-        rs.getInt("asiento_funcion_funcion_sala_numero"));
-
+                rs.getInt("id_tiquete"),
+                rs.getDouble("monto"),
+                rs.getString("asiento_funcion_fila").charAt(0),
+                rs.getInt("asiento_funcion_posicion"),
+                rs.getInt("asiento_funcion_funcion_id"),
+                new Date(rs.getTimestamp("asiento_funcion_funcion_fecha").getTime()),
+                rs.getInt("asiento_funcion_funcion_sala_cinema_id"),
+                rs.getInt("asiento_funcion_funcion_sala_numero"));
     }
 
     @Override
@@ -50,19 +50,19 @@ public class TiqueteBD_DAO extends AbstractDAO<Integer, TiqueteBD> {
         stm.setString(3, String.valueOf(value.getAsiento_funcion_fila()));
         stm.setInt(4, value.getAsiento_funcion_posicion());
         stm.setInt(5, value.getAsiento_funcion_funcion_id());
-        stm.setDate(6, value.getAsiento_funcion_funcion_fecha());
+        stm.setTimestamp(6, new java.sql.Timestamp(value.getAsiento_funcion_funcion_fecha().getTime()));
         stm.setInt(7, value.getAsiento_funcion_funcion_sala_cinema_id());
         stm.setInt(8, value.getAsiento_funcion_funcion_sala_numero());
     }
 
     @Override
     public void setUpdateParameters(PreparedStatement stm, Integer id, TiqueteBD value) throws SQLException {
-  
+
         stm.setDouble(1, value.getMonto());
         stm.setString(2, String.valueOf(value.getAsiento_funcion_fila()));
         stm.setInt(3, value.getAsiento_funcion_posicion());
         stm.setInt(4, value.getAsiento_funcion_funcion_id());
-        stm.setDate(5, value.getAsiento_funcion_funcion_fecha());
+        stm.setTimestamp(5, new java.sql.Timestamp(value.getAsiento_funcion_funcion_fecha().getTime()));
         stm.setInt(6, value.getAsiento_funcion_funcion_sala_cinema_id());
         stm.setInt(7, value.getAsiento_funcion_funcion_sala_numero());
         stm.setInt(8, id);

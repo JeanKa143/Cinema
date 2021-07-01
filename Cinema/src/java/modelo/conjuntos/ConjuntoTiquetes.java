@@ -65,6 +65,17 @@ public class ConjuntoTiquetes implements Serializable {
             return null;
         }
     }
+
+    public TiqueteBD obtener2(int id) {
+        try {
+            TiqueteBD tiquete = tiquetes.retrieve(id);
+            return tiquete;
+
+        } catch (IOException | SQLException | IllegalArgumentException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            return null;
+        }
+    }
     //enlista los tiquetes de la BD
 
     public List<Tiquete> getListaTiquetes() {
@@ -100,10 +111,9 @@ public class ConjuntoTiquetes implements Serializable {
             Logger.getLogger(ConjuntoTiquetes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     //actualiza el tiquete en la BD
-    
-    public void actualizar(TiqueteBD value){
+    public void actualizar(TiqueteBD value) {
         try {
             tiquetes.update(value.getId_tiquete(), value);
         } catch (SQLException ex) {

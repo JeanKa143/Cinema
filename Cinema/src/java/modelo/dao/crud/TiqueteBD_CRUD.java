@@ -49,17 +49,17 @@ public class TiqueteBD_CRUD extends AbstractCRUD{
 
     protected static final String ADD_CMD
             = "INSERT INTO bd_cinema.tiquete "
-            + "(id_tiquete, monto, asiento_funcion_fila, asiento_funcion_posicion, asiento_funcion_funcion_id, asiento_funcion_fecha, asiento_funcion_funcion_sala_cinema_id, asiento_funcion_funcion_sala_numero) "
+            + "(id_tiquete, monto, asiento_funcion_fila, asiento_funcion_posicion, asiento_funcion_funcion_id, asiento_funcion_funcion_fecha, asiento_funcion_funcion_sala_cinema_id, asiento_funcion_funcion_sala_numero) "
             + "VALUES (?, ?, ?, ?, ?, ?, ?, ?); ";
 
     protected static final String RETRIEVE_CMD
             = "SELECT "
-            + "id_tiquete, monto, asiento_funcion_fila, asiento_funcion_posicion, asiento_funcion_funcion_id, asiento_funcion_fecha, asiento_funcion_funcion_sala_cinema_id, asiento_funcion_funcion_sala_numero "
+            + "id_tiquete, monto, asiento_funcion_fila, asiento_funcion_posicion, asiento_funcion_funcion_id, asiento_funcion_funcion_fecha, asiento_funcion_funcion_sala_cinema_id, asiento_funcion_funcion_sala_numero "
             + "FROM bd_cinema.tiquete WHERE id_tiquete = ?; ";
 
     protected static final String UPDATE_CMD
             = "UPDATE bd_cinema.tiquete "
-            + "SET  monto = ?, asiento_funcion_fila = ?, asiento_funcion_posicion = ?, asiento_funcion_funcion_id = ?, asiento_funcion_fecha = ?, asiento_funcion_funcion_sala_cinema_id = ?, asiento_funcion_funcion_sala_numero = ? "
+            + "SET  monto = ?, asiento_funcion_fila = ?, asiento_funcion_posicion = ?, asiento_funcion_funcion_id = ?, asiento_funcion_funcion_fecha = ?, asiento_funcion_funcion_sala_cinema_id = ?, asiento_funcion_funcion_sala_numero = ? "
             + "WHERE id_tiquete = ?; ";
 
     protected static final String DELETE_CMD
